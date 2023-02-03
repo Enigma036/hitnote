@@ -1,0 +1,28 @@
+name: Build and push to TdA
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build
+        uses: docker/build-push-action@v3
+        with:
+          context: ./
+          tags: tda-flask:latest
+          outputs: type=docker,dest=/tmp/tda-flask.tar
+
+      - name: Upload to TdA
+        uses: Tour-de-App/upload-app@1079ded462c5c87ecd77039a955dda2e9db1d809
+        with:
+          team_secret: ${{ secrets.TEAM_SECRET }}
+          image_name: tda-flask
+          image_path: /tmp/tda-flask.tar
