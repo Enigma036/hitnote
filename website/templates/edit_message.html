@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_users.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_messages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_input_types.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_stars.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_label.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_add.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_error.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>    
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
+    <title>Přidej zprávu</title>
+</head>
+<body>
+    <section class="user">
+        <div class="main_title">
+            <h1 class="main_title">
+                <span style="cursor: pointer;" onclick=window.location.href='{{ url_for("views.main_window", user=1) }}';>HitNote</span>
+            </h1>
+            <button class="button_add_user" type="button" onclick=window.location.href='{{ url_for("programmer.add")}}';>
+                <span>+ Přidej uživatele</span>
+            </button>
+        </div>
+        <div class="user_list">
+            <div class="user_head">
+                <table>
+                    <th style="width: 70%;">Jméno programátora</th>
+                    <th style="width: 30%;">Operace</th>
+                </table>
+            </div>
+            <div class="user_items">
+                {% for programmer in programmers %}
+                {% if programmer.id == original_programmer.id %}
+                <div class="user_info_forever" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
+                {% else %}
+                <div class="user_info" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
+                {% endif %}
+                    <span class="test" style="width: 70%;">{{programmer.jmeno}}</span>
+                    <span style="width: 30%;">
+                        {% if programmer.id != 1 %}
+                        <button class="button delete" type="button" onclick='stopPropagation(event); deleteProgrammer("{{programmer.id}}");'>&#10006;</button>
+                        {% endif %}
+                        <button class="button edit" type="button" onclick=stopPropagation(event);window.location.href='{{ url_for("programmer.edit", cislo = programmer.id ) }}';>Edit</button>
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="messages">
+        <div class="main_window">
+            <h1 class="main_title">Uprav záznam</h1>
+            <form method="POST">
+                <div class="add_input" style="margin-top: 50px;">
+                    <span>Datum:</span> 
+                    <input class="date input_size" type="date" id="AddDate1"  name="AddDate1" value="{{original_message.date}}">
+                </div>
+                <div class="add_input">
+                    <span>Programovací jazyk:</span> 
+                    <input class="text" type="text" id="AddLanguage1" value="{{original_message.language}}" name="AddLanguage1">
+                </div>
+                <div class="add_input">
+                    <span>Strávený čas v minutách:</span> 
+                    <input class="interval input_size" type="number" id="AddInterval1"  name="AddInterval1" min="0" max="1440" value="{{original_message.interval}}">
+                </div>
+                <div class="add_input" style="display: flex; justify-content: center; margin-top: 0;">
+                    <span>Hodnocení: </span>
+                    <div class="rating input_size" style="margin-top: 10px;">
+                        {%if original_message.stars == 5 %}
+                        <input id="AddRadio1" type="radio" name="AddStar1" value="5" class="star" checked/>
+                        {%else%}
+                        <input id="AddRadio1" type="radio" name="AddStar1" value="5" class="star"/>
+                        {%endif%}
+                        <label for="AddRadio1">&#9733;</label>
+                        {%if original_message.stars == 4%}
+                        <input id="AddRadio2" type="radio" name="AddStar1" value="4" class="star" checked/>
+                        {%else%}
+                        <input id="AddRadio2" type="radio" name="AddStar1" value="4" class="star"/>
+                        {%endif%}
+                        <label for="AddRadio2">&#9733;</label>
+                        {%if original_message.stars == 3%}
+                        <input id="AddRadio3" type="radio" name="AddStar1" value="3" class="star" checked/>
+                        {%else%}
+                        <input id="AddRadio3" type="radio" name="AddStar1" value="3" class="star"/>
+                        {%endif%}
+                        <label for="AddRadio3">&#9733;</label>
+                        {%if original_message.stars == 2%}
+                        <input id="AddRadio4" type="radio" name="AddStar1" value="2" class="star" checked/>
+                        {%else%}
+                        <input id="AddRadio4" type="radio" name="AddStar1" value="2" class="star"/>
+                        {%endif%}
+                        <label for="AddRadio4">&#9733;</label>
+                        {%if original_message.stars == 1%}
+                        <input id="AddRadio5" type="radio" name="AddStar1" value="1" class="star" checked/>
+                        {%else%}
+                        <input id="AddRadio5" type="radio" name="AddStar1" value="1" class="star"/>
+                        {%endif%}
+                        <label for="AddRadio5">&#9733;</label>
+                    </div>
+                </div>
+                <div class="add_input" style="margin-top: 0;">
+                    <span>Programátor: </span> 
+                    <select class="languages input_size" name="AddProgrammer1" id="AddProgrammer1">
+                        <option value={{original_message.user_id}}>{{original_programmer.jmeno}}</option>
+                        {% for programmer in programmers %}
+                        {% if programmer.id != original_message.user_id %}
+                        <option value={{programmer.id}}>{{programmer.jmeno}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="add_input">
+                    <textarea id="AddText1" name="AddText1" maxlength="300" placeholder="Zadejte popisek...">{{original_message.data}}</textarea>
+                </div>
+                <div class="error_messages">
+                    <span class="{{trida}}">{{ message }}</span>
+                </div>
+                <div class="add_input"  style="margin-top: 0;">
+                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Upravit zprávu"/>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

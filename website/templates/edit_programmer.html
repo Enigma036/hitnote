@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_users.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_messages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_input_types.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_stars.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_label.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_add.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_error.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_read.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
+    <title>Edit</title>
+</head>
+<body>  
+    <section class="user">
+        <div class="main_title">
+            <h1 class="main_title">
+                <span style="cursor: pointer;" onclick=window.location.href='{{ url_for("views.main_window", user=1) }}';>HitNote</span>
+            </h1>
+        </div>
+        <div class="user_list">
+            <div class="user_head">
+                <table>
+                    <th style="width: 70%;">Jméno programátora</th>
+                    <th style="width: 30%;">Operace</th>
+                </table>
+            </div>
+            <div class="user_items">
+                {% for programmer in programmers %}
+                {% if programmer.id == original_programmer.id %}
+                <div class="user_info_forever" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
+                {% else %}
+                <div class="user_info" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
+                {% endif %}
+                    <span class="test" style="width: 70%;">{{programmer.jmeno}}</span>
+                    <span style="width: 30%;">
+                        {% if programmer.id != 1 %}
+                        <button class="button delete" type="button" onclick='stopPropagation(event); deleteProgrammer("{{programmer.id}}");'>&#10006;</button>
+                        {% endif %}
+                        <button class="button edit" type="button" onclick=stopPropagation(event);window.location.href='{{ url_for("programmer.edit", cislo = programmer.id ) }}';>Edit</button>
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="messages">
+        <div class="main_window">
+            <h1 class="main_title">Uprav programátora</h1>
+            <div class="add_input" style="margin-top: 50px;">
+                <span>Původní jméno: <span style="color: white;">{{original_programmer.jmeno}}</span></span>
+            </div>
+            <form method="POST">
+                <div class="add_input" style="margin-top: 10px;">
+                    <span>Jméno programátora</span> 
+                    <input class="text" type="text" id="AddNewProgrammer1" name="AddNewProgrammer1" value="{{original_programmer.jmeno}}">
+                </div>
+                <div class="error_messages">
+                    <span class="{{trida}}">{{ message }}</span>
+                </div>
+                <div class="add_input"  style="margin-top: 0;">
+                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Upravit zprávu"/>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

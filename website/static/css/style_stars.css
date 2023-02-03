@@ -1,0 +1,30 @@
+  .rating {
+    display: block;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    text-align: center;
+  }
+  .rating .star {
+    display: none;
+  }
+  .rating label {
+    color: lightgray;
+    display: inline-block;
+    font-size: 22pt;
+    margin: 0 -2px;
+    transition: transform .15s ease;
+  }
+  .rating label:hover {
+    transform: scale(1.35, 1.35);
+  }
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: #1DA1F2;
+  }
+  .rating .star:checked ~ label {
+    color: #1DA1F2;
+  }
+
+  .star_label{
+    color: #46545d;
+  }

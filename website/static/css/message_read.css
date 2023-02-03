@@ -1,0 +1,39 @@
+div.main_window{
+    height: 100%;
+    width: 100%;
+}
+
+h1.main_title{
+    font-size: 60px;
+    color: #1DA1F2;
+    padding-top: 30px;
+    text-align: center;
+}
+
+div.message_read_info{
+    margin-top: 20px;
+    text-align: left;
+}
+
+div.message_read_info span{
+    font-size: 20px;
+    margin: 20px;
+    color: #1DA1F2;
+}
+
+div.message_read_info i{
+    color: white;
+}
+
+div.message_read_info p{
+    width: 450px;
+    max-width: 450px;
+    height: 150px;
+    max-height: 150px;
+    text-align: justify;
+    margin: 20px;
+    color: white;
+    word-wrap: break-word;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,40 @@
+div.main_window{
+    height: 100%;
+    width: 100%;
+}
+
+h1.main_title{
+    font-size: 60px;
+    color: #1DA1F2;
+    padding-top: 30px;
+    text-align: center;
+}
+
+div.add_input{
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+div.add_input span{
+    font-size: 20px;
+    margin: 20px;
+    color: #1DA1F2;
+}
+
+
+.input_size{
+    font-size: 15px;
+}
+
+div.add_input textarea{
+    resize: none;
+    width: 450px;
+    height: 150px;
+    border: 5px solid;
+    border-color: #1DA1F2;
+    background-color: #14171A;
+    border-radius: 10px;
+    color: #1DA1F2;
+
+}

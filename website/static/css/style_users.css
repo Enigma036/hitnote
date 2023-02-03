@@ -1,0 +1,185 @@
+h1.main_title{
+    font-size: 60px;
+    color: #1DA1F2;
+    padding-top: 30px;
+}
+
+div.main_title{
+    text-align: center;
+    justify-content: center;
+    height: 40%;
+}
+
+button.button_add_user{
+    cursor: pointer;
+    background-color: #1DA1F2;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #14171A;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 50px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+button.button_add_user:hover{
+    cursor: pointer;
+    background: #14171A;
+    color: #1DA1F2;
+}
+
+div.user_list{
+    background-color: #14171A;
+    border-radius: 0 50px 0 0;
+    border: 5px solid;
+    border-color: #1DA1F2;
+    width: 100%;
+    height: 59.2%;
+    max-height: 59.2%;
+    border-bottom: none;
+    border-left: none;
+
+}
+
+div.user_head{
+    width: 90%; 
+    height: 10%;
+    margin-top: 10px;
+}
+
+div.user_head table{
+    width: 100%; 
+    text-align: center;
+}
+
+div.user_head th{
+    font-size: 20px;
+    color: #1DA1F2;
+}
+
+div.user_info{
+    cursor: default;
+    display: flex; 
+    width: 80%; 
+    text-align: center;
+    background-color: #1DA1F2;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-color: #1DA1F2;
+    color: #14171A;
+    transition-duration: 0.4s;
+}
+
+div.user_info:hover{
+    cursor: pointer;
+    display: flex; 
+    width: 80%; 
+    text-align: center;
+    background-color: #14171A;
+    color: #1DA1F2;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-color: #1DA1F2;
+}
+
+div.user_info_forever{
+    cursor: pointer;
+    display: flex; 
+    width: 80%; 
+    text-align: center;
+    background-color: #14171A;
+    color: #1DA1F2;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-color: #1DA1F2;
+}
+
+div.user_info_forever span{
+    padding: 5px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 15px;
+}
+
+
+div.user_info span{
+    padding: 5px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 15px;
+}
+
+.button{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    margin-top: 5px;
+    font-size: 10px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.delete{
+    background-color: rgb(193, 29, 29);
+    color: rgb(84, 2, 2);
+    border-color: rgb(84, 2, 2);
+    transition-duration: 0.4s;
+}
+
+.delete:hover{
+    background-color: rgb(96, 0, 0);
+    color: rgb(183, 15, 15);
+}
+
+.edit{
+    width: 30px;
+    background-color: white;
+    color: #1DA1F2;
+    border-color: #1DA1F2;
+    transition-duration: 0.4s;
+}
+
+.edit:hover{
+    background-color: #14171A;
+    border: 1px solid;
+    color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+
+
+
+div.user_items{
+    width: 100%; 
+    overflow-y: scroll; 
+    height: 90%;
+    text-align: center;
+    justify-content: center;
+}

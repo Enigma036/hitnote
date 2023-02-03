@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans";
+}
+
+html{
+    height: 100%;
+    overflow: hidden;
+}
+
+body{
+    background-color: #14171A;
+    height: 100%;
+    
+}
+
+section.user{
+    height: 100%;
+    width: 30%;
+    float: left;
+
+}
+
+section.messages{
+    height: 100%;
+    width: 65%;
+    float: right;
+}
+
+
+
