@@ -131,6 +131,7 @@ def edit(cislo):
             er_succ_message = "Zpráva byla upravena"
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
+            jazyk = jazyk.strip()
             Note.query.filter_by(id=cislo).first_or_404().date = datum
             Note.query.filter_by(id=cislo).first_or_404().language = jazyk
             Note.query.filter_by(id=cislo).first_or_404().interval = cas
