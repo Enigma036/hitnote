@@ -66,6 +66,7 @@ def add(cislo):
             er_succ_message = "Zpráva byla vytvořena"
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
+            jazyk = jazyk.strip()
             new_note = Note(date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = programator, data = text)
             db.session.add(new_note)
             db.session.commit()
