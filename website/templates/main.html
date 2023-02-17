@@ -37,14 +37,12 @@
         <div class="message_head">
             <div class="message_button">
                 <div>
-                    <div class="username" style="float: left;">
+                    <div class="username">
                         <span>{{programmer}}</span>
-                    </div>
-                    <div style="float: left;">
-                        <button class="log_out" type="button"><span class="fa fa-sign-out"></span></button>
                     </div>
                 </div>
                 <div class="buttons_head">
+                    <button class="log_out" type="button"><span class="fa fa-sign-out"></span></button>
                     <button class="new_mess" type="button"><span class="fa fa-gear"></span></button>
                     <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add", cislo = user_id) }}';>+</button>
                 </div>
