@@ -43,4 +43,4 @@ def main_window(user):
     if request.method == 'GET':
         ScriptFunction =  'loadActiveFormAfterLoad("FormFiltration1");'
 
-    return render_template("main.html", programmers=User.query.all(), user_id = int(user), notes = notes, unique_languages = unique_languages, ScriptFunction=ScriptFunction)
+    return render_template("main.html", programmer= User.query.filter_by(id=user).first_or_404().jmeno, user_id = int(user), notes = notes, unique_languages = unique_languages, ScriptFunction=ScriptFunction)

@@ -17,6 +17,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Filtration.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Sort.js') }}"></script>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
     <title>HitNote</title>
     <script>
@@ -32,120 +33,99 @@
 </head>
 <body> 
     <form method="POST" id="FormFiltration1" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
-    <section class="user">
-        <div class="main_title">
-            <h1 class="main_title">
-                <span style="cursor: pointer;" onclick=window.location.href='{{ url_for("views.main_window", user=1) }}';>HitNote</span>
-            </h1>
-            <button class="button_add_user" type="button" onclick=window.location.href='{{ url_for("programmer.add")}}';>
-                <span>+ Přidej uživatele</span>
-            </button>
-        </div>
-        <div class="user_list">
-            <div class="user_head">
-                <table>
-                    <th style="width: 70%;">Jméno programátora</th>
-                    <th style="width: 30%;">Operace</th>
-                </table>
-            </div>
-            <div class="user_items">
-                {% for programmer in programmers %}
-                {% if programmer.id == user_id %}
-                <div class="user_info_forever" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
-                {% else %}
-                <div class="user_info" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
-                {% endif %}
-                    <span class="test" style="width: 70%;">{{programmer.jmeno}}</span>
-                    <span style="width: 30%;">
-                        {% if programmer.id != 1 %}
-                        <button class="button delete" type="button" onclick='stopPropagation(event); deleteProgrammer("{{programmer.id}}");'>&#10006;</button>
-                        {% endif %}
-                        <button class="button edit" type="button" onclick=stopPropagation(event);window.location.href='{{ url_for("programmer.edit", cislo = programmer.id ) }}';>Edit</button>
-                    </span>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
     <section class="messages">
         <div class="message_head">
             <div class="message_button">
-                <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add", cislo = user_id) }}';>+ Nová zpráva</button>
+                <div>
+                    <div class="username" style="float: left;">
+                        <span>{{programmer}}</span>
+                    </div>
+                    <div style="float: left;">
+                        <button class="log_out" type="button"><span class="fa fa-sign-out"></span></button>
+                    </div>
+                </div>
+                <div class="buttons_head">
+                    <button class="new_mess" type="button"><span class="fa fa-gear"></span></button>
+                    <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add", cislo = user_id) }}';>+</button>
+                </div>
             </div>
+        </div>
             <!--FILTRACE-->
                 <div class="message_filters">
                     <h2>Filtrace</h2>
-                    <div style="display: flex; height: 100%;">
-                        <div class="message_filters_item left">
-                            <div style="margin-top: 20px; margin-bottom: auto; display: flex;">
-                                <input class="checkbox" type="checkbox" id="CheckDate" name="CheckDate" onchange="changeCookiesForCheckBoxes('CheckDate','{{user_id}}'); activeForm('FormFiltration1');">
-                                <label for="CheckDate">
-                                    <span>Datum: od</span> 
-                                    <input class="date" type="date" id="FiltrationDate1"  name="FiltrationDate1" value="2022-01-01" onblur="Date1(); changeCookies('FiltrationDate1','{{user_id}}'); elementFiltrationChange('CheckDate');">
-                                    <span>do</span>
-                                    <input class="date" type="date" id="FiltrationDate2" name="FiltrationDate2" value="2023-01-01" onblur="Date2(); changeCookies('FiltrationDate2','{{user_id}}'); elementFiltrationChange('CheckDate');">
-                                </label>
-                            </div>
+                    <div style="display: flex; height: 100%; margin-left: 10%; margin-right: 10%;">
+                        <div class="message_filters_item">
+                            <div>
+                                <div style="margin-top: 20px; margin-bottom: auto; display: flex;">
+                                    <input class="checkbox" type="checkbox" id="CheckDate" name="CheckDate" onchange="changeCookiesForCheckBoxes('CheckDate','{{user_id}}'); activeForm('FormFiltration1');">
+                                    <label for="CheckDate">
+                                        <span>Datum: od</span> 
+                                        <input class="date" type="date" id="FiltrationDate1"  name="FiltrationDate1" value="2022-01-01" onblur="Date1(); changeCookies('FiltrationDate1','{{user_id}}'); elementFiltrationChange('CheckDate');">
+                                        <span>do</span>
+                                        <input class="date" type="date" id="FiltrationDate2" name="FiltrationDate2" value="2023-01-01" onblur="Date2(); changeCookies('FiltrationDate2','{{user_id}}'); elementFiltrationChange('CheckDate');">
+                                    </label>
+                                </div>
                             <br>
-                            <div style="margin-top: auto; margin-bottom: auto; display: flex;">
-                                <input class="checkbox" type="checkbox" id="CheckInterval" name="CheckInterval" onchange="changeCookiesForCheckBoxes('CheckInterval','{{user_id}}'); activeForm('FormFiltration1');">
-                                <label for="CheckInterval">
-                                    <span>Časový interval: od</span> 
-                                    <input class="interval" type="number" id="FiltrationInterval1"  name="FiltrationInterval1" min="0" max="1440" value="1" onchange="Interval1('FiltrationInterval1','FiltrationInterval2'); changeCookies('FiltrationInterval1','{{user_id}}'); elementFiltrationChange('CheckInterval');">
-                                    <span>do</span>
-                                    <input class="interval" type="number" id="FiltrationInterval2" name="FiltrationInterval2" min="0" max="1440" value="1440" onchange="Interval2('FiltrationInterval1','FiltrationInterval2'); changeCookies('FiltrationInterval2','{{user_id}}'); elementFiltrationChange('CheckInterval');">
-                                </label>
+                                <div style="margin-top: auto; margin-bottom: auto; display: flex;">
+                                    <input class="checkbox" type="checkbox" id="CheckInterval" name="CheckInterval" onchange="changeCookiesForCheckBoxes('CheckInterval','{{user_id}}'); activeForm('FormFiltration1');">
+                                    <label for="CheckInterval">
+                                        <span>Časový interval: od</span> 
+                                        <input class="interval" type="number" id="FiltrationInterval1"  name="FiltrationInterval1" min="0" max="1440" value="1" onchange="Interval1('FiltrationInterval1','FiltrationInterval2'); changeCookies('FiltrationInterval1','{{user_id}}'); elementFiltrationChange('CheckInterval');">
+                                        <span>do</span>
+                                        <input class="interval" type="number" id="FiltrationInterval2" name="FiltrationInterval2" min="0" max="1440" value="1440" onchange="Interval2('FiltrationInterval1','FiltrationInterval2'); changeCookies('FiltrationInterval2','{{user_id}}'); elementFiltrationChange('CheckInterval');">
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="message_filters_item right">
-                            <div style="margin-top: 20px; margin-bottom: auto; margin-left: 100px; display: flex;">
-                                <input class="checkbox" type="checkbox" id="CheckLanguages" name="CheckLanguages" onchange="changeCookiesForCheckBoxes('CheckLanguages','{{user_id}}'); activeForm('FormFiltration1');">
-                                <label for="CheckLanguage">
-                                    <span>Programovací jazyk:</span> 
-                                    <select class="languages" name="FiltrationLanguages1" id="FiltrationLanguages1" onchange="changeCookiesForSelect('{{user_id}}'); elementFiltrationChange('CheckLanguages');">
-                                        {% for language in unique_languages %}
-                                            <option value="{{language}}">{{language}}</option>
-                                        {% endfor %}
-                                    </select>
-                                </label>
-                            </div>
-                            <br>
-                            <div style="margin-top: auto; margin-bottom: auto;  margin-left: 100px; display: flex;">
-                                <input class="checkbox" type="checkbox" id="CheckStars" name="CheckStars" onchange="changeCookiesForCheckBoxes('CheckStars','{{user_id}}');activeForm('FormFiltration1');">
-                                <label for="CheckStars" style="display: flex;">
-                                    <span>Hodnocení od:</span>
-                                    <div class="rating" style="margin-top: 5px;">
-                                        <input id="FiltrationRadio1a" type="radio" name="FiltrationStar1" value="5" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(1,"{{user_id}}"); elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio1a">&#9733;</label>
-                                        <input id="FiltrationRadio2a" type="radio" name="FiltrationStar1" value="4" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(2,"{{user_id}}");  elementFiltrationChange("CheckStars");' />
-                                        <label for="FiltrationRadio2a">&#9733;</label>
-                                        <input id="FiltrationRadio3a" type="radio" name="FiltrationStar1" value="3" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio3a">&#9733;</label>
-                                        <input id="FiltrationRadio4a" type="radio" name="FiltrationStar1" value="2" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio4a">&#9733;</label>
-                                        <input id="FiltrationRadio5a" type="radio" name="FiltrationStar1" value="1" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(5,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
-                                        <label for="FiltrationRadio5a">&#9733;</label>
-                                    </div>
-                                    <span>do:</span>
-                                    <div class="rating" style="margin-top: 5px;">
-                                        <input id="FiltrationRadio1b" type="radio" name="FiltrationStar2" value="5" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(1,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
-                                        <label for="FiltrationRadio1b">&#9733;</label>
-                                        <input id="FiltrationRadio2b" type="radio" name="FiltrationStar2" value="4" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(2,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio2b">&#9733;</label>
-                                        <input id="FiltrationRadio3b" type="radio" name="FiltrationStar2" value="3" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio3b">&#9733;</label>
-                                        <input id="FiltrationRadio4b" type="radio" name="FiltrationStar2" value="2" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio4b">&#9733;</label>
-                                        <input id="FiltrationRadio5b" type="radio" name="FiltrationStar2" value="1" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(5,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
-                                        <label for="FiltrationRadio5b">&#9733;</label>
-                                    </div>
-                                </label>
+                        <div class="message_filters_item">
+                            <div>
+                                <div style="margin-top: 20px; margin-bottom: auto; margin-left: 100px; display: flex;">
+                                    <input class="checkbox" type="checkbox" id="CheckLanguages" name="CheckLanguages" onchange="changeCookiesForCheckBoxes('CheckLanguages','{{user_id}}'); activeForm('FormFiltration1');">
+                                    <label for="CheckLanguage">
+                                        <span>Programovací jazyk:</span> 
+                                        <select class="languages" name="FiltrationLanguages1" id="FiltrationLanguages1" onchange="changeCookiesForSelect('{{user_id}}'); elementFiltrationChange('CheckLanguages');">
+                                            {% for language in unique_languages %}
+                                                <option value="{{language}}">{{language}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </label>
+                                </div>
+                                <br>
+                                <div style="margin-top: auto; margin-bottom: auto;  margin-left: 100px; display: flex;">
+                                    <input class="checkbox" type="checkbox" id="CheckStars" name="CheckStars" onchange="changeCookiesForCheckBoxes('CheckStars','{{user_id}}');activeForm('FormFiltration1');">
+                                    <label for="CheckStars" style="display: flex;">
+                                        <span>Hodnocení od:</span>
+                                        <div class="rating" style="margin-top: 5px;">
+                                            <input id="FiltrationRadio1a" type="radio" name="FiltrationStar1" value="5" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(1,"{{user_id}}"); elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio1a">&#9733;</label>
+                                            <input id="FiltrationRadio2a" type="radio" name="FiltrationStar1" value="4" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(2,"{{user_id}}");  elementFiltrationChange("CheckStars");' />
+                                            <label for="FiltrationRadio2a">&#9733;</label>
+                                            <input id="FiltrationRadio3a" type="radio" name="FiltrationStar1" value="3" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio3a">&#9733;</label>
+                                            <input id="FiltrationRadio4a" type="radio" name="FiltrationStar1" value="2" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio4a">&#9733;</label>
+                                            <input id="FiltrationRadio5a" type="radio" name="FiltrationStar1" value="1" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(5,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
+                                            <label for="FiltrationRadio5a">&#9733;</label>
+                                        </div>
+                                        <span>do:</span>
+                                        <div class="rating" style="margin-top: 5px;">
+                                            <input id="FiltrationRadio1b" type="radio" name="FiltrationStar2" value="5" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(1,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
+                                            <label for="FiltrationRadio1b">&#9733;</label>
+                                            <input id="FiltrationRadio2b" type="radio" name="FiltrationStar2" value="4" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(2,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio2b">&#9733;</label>
+                                            <input id="FiltrationRadio3b" type="radio" name="FiltrationStar2" value="3" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio3b">&#9733;</label>
+                                            <input id="FiltrationRadio4b" type="radio" name="FiltrationStar2" value="2" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio4b">&#9733;</label>
+                                            <input id="FiltrationRadio5b" type="radio" name="FiltrationStar2" value="1" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(5,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <label for="FiltrationRadio5b">&#9733;</label>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        </div>
-
         <!--SEZNAM ZPRÁV-->
         <div class="message_list">
             <div class="message_list_head">

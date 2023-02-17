@@ -1,7 +1,48 @@
 div.message_head{
     top: 0;
-    width: 100%;
-    height: 40%;
+    width: 90%;
+    height: 17%;
+}
+
+button.log_out{
+    cursor: pointer;
+    background-color: #a11616;
+    border: 3px solid;
+    border-color: #a11616;
+    color: #14171A;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 50px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 15px;
+    transition-duration: 0.4s;
+}
+
+button.log_out:hover{
+    background-color: #14171A;
+    border-color: #a11616;
+    color: #a11616;
+}
+
+
+div.username{
+    background-color: #14171A;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #1DA1F2;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 50px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+
+div.buttons_head{
+    margin-left: auto;
 }
 
 
@@ -11,12 +52,13 @@ button.new_mess{
     border: 3px solid;
     border-color: #1DA1F2;
     color: #14171A;
-    padding: 5px 15px;
+    padding: 5px 30px;
     text-align: center;
     text-decoration: none;
-    font-size: 35px;
+    font-size: 50px;
+    margin: 10px;
     margin-top: 50px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition-duration: 0.4s;
 }
 
@@ -27,7 +69,9 @@ button.new_mess:hover{
 }
 
 div.message_button{
-    text-align: center;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
     width: 100%;
     height: 40%;    
 }
@@ -35,35 +79,28 @@ div.message_button{
 div.message_filters{
     text-align: center;
     width: 100%;
-    height: 60%;
+    margin-bottom: 30px;
 
 }
 
 div.message_filters h2{
-    font-size: 30px;
+    font-size: 35px;
     color: #1DA1F2;
     margin-top: 20px;
 }
 
 div.message_filters_item{
-    width: 50%;
+    width: 100%;
     height: 100%;
-}
-
-.left{
- float: left;
- text-align: left;
- 
-}
-
-.right{
-    float: right;
-    text-align: left;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+    
 }
 
 div.message_filters_item label{
     color: #364b58;
-    font-size: 15px;
 }    
 
 div.message_filters_item span{
@@ -73,14 +110,16 @@ div.message_filters_item span{
 
 div.message_list{
     width: 90%;
-    height: 59.2%;
-    max-height: 59.2%;
+    height: 55%;
     background-color: #14171A;
-    border-radius: 50px 50px 0 0;
+    border-radius: 20px;
+    padding: 5px;
     border: 5px solid;
     border-color: #1DA1F2;
-    border-bottom: none;
     text-align: -webkit-center;
+    justify-content: center;
+    margin: 0 auto;
+
 }
 
 div.message_list table{
