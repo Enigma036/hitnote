@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, jsonify, request
 from datetime import datetime
 from .models import Note, User
-from website import create_first_user, filtrateNotes, getFormData, getSortData, sort_items
+from website import create_first_user
+from .sort_and_filtration import filtrateNotes, getFormData, getSortData, sort_items
 from . import db
 from sqlalchemy import desc
 
