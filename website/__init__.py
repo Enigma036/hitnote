@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from os import path
 from flask_login import LoginManager
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 db = SQLAlchemy()
@@ -47,7 +48,7 @@ def create_app():
 def create_first_user():
     from .models import User, Note
     if User.query.count() == 0:
-        new_programmer = User(jmeno = "admin", email="admin@gmail.com", username="admin", role="Administrátor",password="8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92")
+        new_programmer = User(jmeno = "admin", email="admin@gmail.com", username="admin", role="Administrátor",password=generate_password_hash("123456"))
         db.session.add(new_programmer)
         db.session.commit()
         

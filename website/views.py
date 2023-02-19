@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, redirect, url_for, jsonify, reques
 from flask_login import login_required, current_user
 from datetime import datetime
 from .models import Note, User
-from website import create_first_user
 from .sort_and_filtration import filtrateNotes, getFormData, getSortData, sort_items
 from . import db
 from sqlalchemy import desc
@@ -14,7 +13,6 @@ views = Blueprint("views", __name__)
 @views.route("/", methods=['GET', 'POST'])
 @login_required
 def home():
-    create_first_user()
     
     notes = User.query.filter_by(id=current_user.id).first_or_404().notes
     unique_languages = []
