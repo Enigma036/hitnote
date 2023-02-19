@@ -12,42 +12,49 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_label.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/message_add.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/message_error.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_import_export.css') }}">
-    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_read.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
-    <title>Uprav zprávu</title>
+    <title>Zpráva</title>
 </head>
-<body>
+<body> 
     <section class="messages">
         <div class="main_window">
             <div class="message_read_info">
                 <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("views.home", cislo = user_id) }}';>&#8592</button>
                 <div class="right">
-                    <h1 class="main_title">
-                        Karel Zahradník
-                    </h1>
+                    <div class="username">
+                        {{(original_message.date.day)}}. {{(original_message.date.month)}}. {{(original_message.date.year)}}
+                    </div>
                 </div>
             </div>
-            <form method="POST">
-                <h2 class="main_title">
-                    Importovat zprávy
-                </h2>
-                <div class="message_read_info">
-                    <input type="file" accept=".csv">
-                </div>
-                <div class="add_input">
-                    <input type="submit" class="button_add_user" value="Importovat zprávy"/>
+            <h1 class="main_title">
+                Zpráva
+            </h1>
+            <div class="message_read_info">
+                <div class="username above_message nowrap">
+                    <span>{{original_message.language}}</span>
                 </div>
 
-                <h2 class="main_title">
-                    Exportovat zprávy
-                </h2>
-                <div class="add_input">
-                    <input type="submit" class="button_add_user" value="Exportovat zprávy"/>
+                <div class="username above_message nowrap">
+                    <span>{{original_message.interval}} min.</span>
                 </div>
-            </form>
+
+                <div class="username above_message nowrap">
+                    <span>{% for star in range(original_message.stars)%}&#9733;{% endfor %}</span>
+                </div>
+
+                <div class="username above_message nowrap">
+                    <span>{{original_programmer.jmeno}}</span>
+                </div>
+            </div>
+            <div class="message_read_info">
+                <div class="username for_note">
+                    <p>{{original_message.data}}</p>
+                </div>
+            </div>
         </div>
     </section>
 </body>

@@ -25,6 +25,13 @@ button.button_add_user{
     transition-duration: 0.4s;
 }
 
+button.modern_button{
+    margin-top: 30px;
+    font-size: 30px;
+    border-radius: 15px;
+    padding: 5px 35px;
+}
+
 button.button_add_user:hover{
     cursor: pointer;
     background: #14171A;
@@ -33,19 +40,20 @@ button.button_add_user:hover{
 
 div.user_list{
     background-color: #14171A;
-    border-radius: 0 50px 0 0;
+    border-radius: 50px;
     border: 5px solid;
     border-color: #1DA1F2;
-    width: 100%;
-    height: 59.2%;
-    max-height: 59.2%;
-    border-bottom: none;
-    border-left: none;
+    width: 90%;
+    height: 50%;
+    max-height: 50%;
+    margin: 0 auto;
 
 }
 
 div.user_head{
-    width: 90%; 
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
     height: 10%;
     margin-top: 10px;
 }
@@ -56,14 +64,14 @@ div.user_head table{
 }
 
 div.user_head th{
-    font-size: 20px;
+    font-size: 25px;
     color: #1DA1F2;
 }
 
 div.user_info{
     cursor: default;
     display: flex; 
-    width: 80%; 
+    width: 90%; 
     text-align: center;
     background-color: #1DA1F2;
     border-radius: 8px;
@@ -80,7 +88,7 @@ div.user_info{
 div.user_info:hover{
     cursor: pointer;
     display: flex; 
-    width: 80%; 
+    width: 90%; 
     text-align: center;
     background-color: #14171A;
     color: #1DA1F2;
@@ -97,7 +105,7 @@ div.user_info:hover{
 div.user_info_forever{
     cursor: pointer;
     display: flex; 
-    width: 80%; 
+    width: 90%; 
     text-align: center;
     background-color: #14171A;
     color: #1DA1F2;
@@ -177,6 +185,7 @@ div.user_info span{
 
 
 div.user_items{
+    margin: 0 auto;
     width: 100%; 
     overflow-y: scroll; 
     height: 90%;

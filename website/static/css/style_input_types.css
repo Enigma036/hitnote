@@ -15,7 +15,6 @@ input.checkbox {
     color-scheme: dark;
     cursor: pointer;
     font-size: 18px;
-
   }
 
 input.interval {  
@@ -27,7 +26,6 @@ input.interval {
     color-scheme: dark;
     cursor: pointer;
     font-size: 18px;
-
   }
 
 select.languages {

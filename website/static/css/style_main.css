@@ -27,5 +27,11 @@ section.messages{
     width: 100%;
 }
 
+section.messages2{
+    height: 100%;
+    width: 70%;
+    float: right;
+}
+
 
 

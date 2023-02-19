@@ -1,39 +1,89 @@
 div.main_window{
     height: 100%;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 h1.main_title{
-    font-size: 60px;
+    font-size: 65px;
     color: #1DA1F2;
-    padding-top: 30px;
     text-align: center;
 }
 
 div.message_read_info{
     margin-top: 20px;
-    text-align: left;
+    display: flex;
 }
 
 div.message_read_info span{
-    font-size: 20px;
-    margin: 20px;
-    color: #1DA1F2;
+    font-size: 25px;
 }
 
 div.message_read_info i{
     color: white;
 }
 
-div.message_read_info p{
-    width: 450px;
-    max-width: 450px;
-    height: 150px;
-    max-height: 150px;
+p{
+    font-size: 30px;
     text-align: justify;
-    margin: 20px;
+    margin: 5px;
     color: white;
     word-wrap: break-word;
     white-space: wrap;
     text-overflow: ellipsis;
+}
+
+.nowrap{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div.username{
+    background-color: #14171A;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #1DA1F2;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+
+.above_message{
+    width: 25%;
+}
+
+.for_note{
+    width: 100%;
+    height: 375px;
+}
+
+button.new_mess{
+    cursor: pointer;
+    background-color: #1DA1F2;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #14171A;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 50px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 15px;
+    transition-duration: 0.4s;
+}
+
+button.new_mess:hover{
+    cursor: pointer;
+    background: #14171A;
+    color: #1DA1F2;
+}
+
+.right{
+    margin-left: auto;
 }

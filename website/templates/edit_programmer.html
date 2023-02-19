@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,61 +13,118 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/message_add.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/message_error.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/message_read.css') }}">
-    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/Popup.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
-    <title>Edit</title>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
+    <title>Uprav programátora</title>
 </head>
-<body>  
+<body>
     <section class="user">
         <div class="main_title">
-            <h1 class="main_title">
-                <span style="cursor: pointer;" onclick=window.location.href='{{ url_for("views.main_window", user=1) }}';>HitNote</span>
-            </h1>
+            <button class="new_mess" type="button"  onclick=window.location.href='{{ url_for("views.home", cislo = user_id) }}';>&#8592</button>
+            <br>
+            <button class="button_add_user modern_button">Přidej uživatele</button>
+            <br>
+            <button class="button_add_user modern_button">Import/Export</button>
         </div>
         <div class="user_list">
             <div class="user_head">
                 <table>
-                    <th style="width: 70%;">Jméno programátora</th>
+                    <th style="width: 40%;">Jméno</th>
+                    <th style="width: 30%;">Role</th>
                     <th style="width: 30%;">Operace</th>
                 </table>
             </div>
             <div class="user_items">
                 {% for programmer in programmers %}
-                {% if programmer.id == original_programmer.id %}
+                {% if programmer.id == user_id %}
                 <div class="user_info_forever" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
                 {% else %}
                 <div class="user_info" onclick=window.location.href='{{ url_for("views.main_window", user = programmer.id ) }}';>
                 {% endif %}
-                    <span class="test" style="width: 70%;">{{programmer.jmeno}}</span>
+                    <span style="width: 40%;">{{programmer.jmeno}}</span>
+                    <span style="width: 30%;">Administrátor</span>
                     <span style="width: 30%;">
+                        <div class="popup" id="popup-delete{{programmer.id}}">
+                            <div class="overlay" onclick="stopPropagation(event);togglePopup()"></div>
+                            <div class="content" onclick="stopPropagation(event)">
+                                <p onclick="stopPropagation(event)">Smazat uživatele?</p>
+                                <button class="delete2" type="button" onclick='stopPropagation(event); deleteProgrammer("{{programmer.id}}");'>Smazat</button>
+                                <button class="close" type="button" onclick="stopPropagation(event);togglePopup('{{programmer.id}}')">Zpět</button>
+                            </div>
+                        </div>
                         {% if programmer.id != 1 %}
-                        <button class="button delete" type="button" onclick='stopPropagation(event); deleteProgrammer("{{programmer.id}}");'>&#10006;</button>
+                        <button class="button delete" type="button" onclick="stopPropagation(event);togglePopup('{{programmer.id}}')">&#10006;</button>
                         {% endif %}
                         <button class="button edit" type="button" onclick=stopPropagation(event);window.location.href='{{ url_for("programmer.edit", cislo = programmer.id ) }}';>Edit</button>
+                    </span>
                     </span>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-    <section class="messages">
+    <section class="messages2">
         <div class="main_window">
-            <h1 class="main_title">Uprav programátora</h1>
-            <div class="add_input" style="margin-top: 50px;">
-                <span>Původní jméno: <span style="color: white;">{{original_programmer.jmeno}}</span></span>
-            </div>
+            <h1 class="main_title">{{original_programmer.jmeno}}</h1>
             <form method="POST">
-                <div class="add_input" style="margin-top: 10px;">
-                    <span>Jméno programátora</span> 
-                    <input class="text" type="text" id="AddNewProgrammer1" name="AddNewProgrammer1" value="{{original_programmer.jmeno}}">
+                <div class="message_read_info">
+                    <div class="above_message2">
+                        <div class="add_input">
+                            <span>Jméno a Přijmení</span> 
+                            <br>
+                            <input class="text space font_size" type="text" id="AddNewProgrammer1" name="AddNewProgrammer1" value="{{original_programmer.jmeno}}">
+                        </div>
+                    </div>
+                    <div class="above_message2">
+                        <div class="add_input font_size">
+                            <span>Uživatelské jméno</span> 
+                            <br>
+                            <input class="text space font_size" placeholder="SimonHalasJablko" type="text" id="AddNewProgrammerUsername1" name="AddNewProgrammerUsername1">
+                        </div>
+                    </div>
+                    <div class="above_message2">
+                        <div class="add_input">
+                            <span>E-mail</span> 
+                            <br>
+                            <input class="text space font_size" placeholder="AdamHladikDestiny@email.cz" type="email" id="AddNewProgrammerEmail1" name="AddNewProgrammerEmail1">
+                        </div>
+                    </div>
+                </div>
+                <div class="message_read_info">
+                    <div class="above_message2">
+                        <div class="add_input">
+                            <span>Heslo</span> 
+                            <br>
+                            <input class="text space font_size" placeholder="•••••••••••" type="password" id="AddNewProgrammer1" name="AddNewProgrammer1">
+                        </div>
+                    </div>
+                    <div class="above_message2">
+                        <div class="add_input font_size">
+                            <span>Potvrzení Hesla</span> 
+                            <br>
+                            <input class="text space font_size" placeholder="•••••••••••" type="password" id="AddNewProgrammerUsername1" name="AddNewProgrammerUsername1">
+                        </div>
+                    </div>
+                    <div class="above_message2">
+                        <div class="add_input">
+                            <span>Role</span> 
+                            <br>
+                            <select class="languages space font_size" name="AddNewProgrammerRole1" id="AddNewProgrammerRole1">
+                                <option value="User">Uživatel</option>
+                                <option value="Admin">Administrátor</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="error_messages">
                     <span class="{{trida}}">{{ message }}</span>
                 </div>
                 <div class="add_input"  style="margin-top: 0;">
-                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Upravit programátora"/>
+                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Uložit uživatele"/>
                 </div>
             </form>
         </div>

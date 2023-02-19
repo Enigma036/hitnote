@@ -10,7 +10,7 @@
   .rating label {
     color: lightgray;
     display: inline-block;
-    font-size: 18px;
+    font-size: 25px;
     margin: 0 -2px;
     transition: transform .15s ease;
   }

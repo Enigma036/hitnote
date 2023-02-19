@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_input_types.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_stars.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_label.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Checker.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Cookies.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Filtration.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Sort.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/Popup.js') }}"></script>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
@@ -42,9 +44,9 @@
                     </div>
                 </div>
                 <div class="buttons_head">
-                    <button class="log_out" type="button"><span class="fa fa-sign-out"></span></button>
-                    <button class="new_mess" type="button"><span class="fa fa-gear"></span></button>
-                    <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add", cislo = user_id) }}';>+</button>
+                    <button title="Odhlásit se" class="log_out" type="button"><span class="fa fa-sign-out"></span></button>
+                    <button title="Nastavení" class="new_mess" type="button"><span class="fa fa-gear"></span></button>
+                    <button title="Nová zpráva" class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add", cislo = user_id) }}';>+</button>
                 </div>
             </div>
         </div>
@@ -182,7 +184,15 @@
                         <span style="width: 15%;">{{note.interval}}</span>
                         <span style="width: 20%;">{% for star in range(note.stars)%}&#9733;{% endfor %}</span>
                         <span style="width: 15%;">
-                            <button class="button delete" type="button" onclick='stopPropagation(event); deleteNote("{{note.id}}","{{note.user_id}}");'>&#10006;</button>
+                            <div class="popup" id="popup-delete{{note.id}}">
+                                <div class="overlay" onclick="stopPropagation(event);togglePopup()"></div>
+                                <div class="content" onclick="stopPropagation(event)">
+                                    <p onclick="stopPropagation(event)">Smazat zprávu?</p>
+                                    <button class="delete2" type="button" onclick='stopPropagation(event); deleteNote("{{note.id}}","{{note.user_id}}");'>Smazat</button>
+                                    <button class="close" type="button" onclick="stopPropagation(event);togglePopup('{{note.id}}')">Zpět</button>
+                                </div>
+                            </div>
+                            <button class="button delete" type="button" onclick="stopPropagation(event);togglePopup('{{note.id}}')">&#10006;</button>
                             <button class="button edit" type="button" onclick=stopPropagation(event);window.location.href='{{ url_for("messages.edit", cislo = note.id ) }}';>Edit</button>
                         </span>
                     </div>
