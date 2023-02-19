@@ -33,5 +33,16 @@ section.messages2{
     float: right;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 1.25),
+       screen and (min--moz-device-pixel-ratio: 1.25),
+       screen and (-o-min-device-pixel-ratio: 5/4),
+       screen and (min-device-pixel-ratio: 1.25),
+       screen and (min-resolution: 120dpi) {
+    /* Přizpůsobení pro obrazovky s 125% zvětšením */
+    body {
+        zoom: 0.75;
+    }
+}
+
 
 

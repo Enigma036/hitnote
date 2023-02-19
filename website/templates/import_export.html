@@ -23,10 +23,14 @@
     <section class="messages">
         <div class="main_window">
             <div class="message_read_info">
-                <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("views.home", cislo = user_id) }}';>&#8592</button>
+                {% if programmer.role == "Administrátor" %}
+                <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("programmer.edit", cislo=programmer.id) }}';>&#8592</button>
+                {% else %}
+                <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("views.home") }}';>&#8592</button>
+                {% endif %}
                 <div class="right">
                     <h1 class="main_title">
-                        Karel Zahradník
+                        {{programmer.jmeno}}
                     </h1>
                 </div>
             </div>

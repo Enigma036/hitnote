@@ -40,13 +40,13 @@
             <div class="message_button">
                 <div>
                     <div class="username">
-                        <span>{{programmer}}</span>
+                        <span>{{programmer.jmeno}}</span>
                     </div>
                 </div>
                 <div class="buttons_head">
-                    <button title="Odhlásit se" class="log_out" type="button"><span class="fa fa-sign-out"></span></button>
-                    <button title="Nastavení" class="new_mess" type="button"><span class="fa fa-gear"></span></button>
-                    <button title="Nová zpráva" class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add", cislo = user_id) }}';>+</button>
+                    <button title="Odhlásit se" class="log_out" type="button" onclick='deleteAllCookies(); window.location.href=`{{ url_for("auth.logout") }}`;'><span class="fa fa-sign-out"></span></button>
+                    <button title="Nastavení" class="new_mess" type="button" onclick=window.location.href='{{ url_for("programmer.edit", cislo = programmer.id) }}';><span class="fa fa-gear"></span></button>
+                    <button title="Nová zpráva" class="new_mess" type="button" onclick=window.location.href='{{ url_for("messages.add") }}';>+</button>
                 </div>
             </div>
         </div>

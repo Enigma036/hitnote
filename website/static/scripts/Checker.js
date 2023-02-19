@@ -92,9 +92,9 @@ function Datum(userId){
         var yesterday = year2 + "-" + month + "-" + day2;
         document.getElementById("FiltrationDate2").defaultValue = today;
         document.getElementById("FiltrationDate1").defaultValue = yesterday;
-        document.cookie = `FiltrationDate2=${today}; path=/${userId}`;
-        document.cookie = `FiltrationDate1=${yesterday}; path=/${userId}`;
-        document.cookie = `datechecker=1; path=/${userId}`;
+        document.cookie = `FiltrationDate2=${today};`;
+        document.cookie = `FiltrationDate1=${yesterday};`;
+        document.cookie = `datechecker=1;`;
     }
 }
 

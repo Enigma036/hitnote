@@ -23,7 +23,7 @@
     <section class="messages">
         <div class="main_window">
             <div class="message_read_info">
-                <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("views.home", cislo = user_id) }}';>&#8592</button>
+                <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("views.home") }}';>&#8592</button>
                 <div class="right">
                     <div class="username">
                         {{(original_message.date.day)}}. {{(original_message.date.month)}}. {{(original_message.date.year)}}
