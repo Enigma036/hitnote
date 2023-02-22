@@ -34,13 +34,13 @@
                     </h1>
                 </div>
             </div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <input name="ImportExportMessage" type="text" style="display: none;" value="IMPORT">  
                 <h2 class="main_title">
                     Importovat zprávy
                 </h2>
                 <div class="message_read_info">
-                    <input type="file" accept=".csv">
+                    <input name="input_file" type="file" accept=".csv">
                 </div>
                 <div class="error_messages">
                     <span class="{{trida}}">{{ message }}</span>
