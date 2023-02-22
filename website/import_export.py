@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, redirect, url_for, jsonify, request
+from flask import Blueprint, render_template, send_file, redirect, url_for, jsonify, request
+from flask import make_response
 from flask_login import login_required, current_user
 from datetime import datetime
 from .models import Note, User
@@ -9,6 +10,7 @@ from sqlalchemy import desc
 import os
 import csv
 import sqlite3
+import io
 
 
 
@@ -49,23 +51,18 @@ def page():
         
         # Když zmáčkne na tlačítko export
         elif import_export_messsage == "EXPORT":
-            db_name = 'database.db'
-            table_name = 'note'
-            output_file = 'output.csv'
-            conn = sqlite3.connect(db_name)
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM " + table_name)
-            rows = cursor.fetchall()
-            cursor.close()
-            conn.close()
-            with open(output_file, 'w', newline='') as csv_file:
-                writer = csv.writer(csv_file)
-                for row in rows:
-                    row_list = list(row)
-                    if row_list[5] == current_user.id:
-                        row_list[2], row_list[3] = row_list[3], row_list[2]
-                        del row_list[5]
-                        row_list[5] = row_list[5].replace("\r", "\\r").replace("\n", "\\n").strip()
-                        writer.writerow(row_list)
+            notes = Note.query.filter_by(user_id=current_user.id).all()
+            output = io.StringIO()
+            writer = csv.writer(output)
+
+            for note in notes:
+                writer.writerow([note.id, note.date, note.interval, note.language, note.stars, note.data])
+
+            # Vytvoření odpovědi pro stahování souboru
+            response = make_response(output.getvalue())
+            response.headers["Content-Disposition"] = "attachment; filename=notes.csv"
+            response.headers["Content-type"] = "text/csv"
+
+            return response
     
     return render_template("import_export.html", programmer = current_user, message = error_messages, trida = trida)
