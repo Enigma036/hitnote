@@ -21,11 +21,13 @@
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/StarsRating.js') }}"></script>
     <title>HitNote</title>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             Datum("{{user_id}}");
             loadCookies("{{user_id}}"); 
+            setPreviousValues();
             loadCookiesForCheckboxes("{{user_id}}");
             sortLoad("{{user_id}}"); 
             getOrder("{{user_id}}");
@@ -96,29 +98,31 @@
                                     <label for="CheckStars" style="display: flex;">
                                         <span>Hodnocení od:</span>
                                         <div class="rating" style="margin-top: 5px;">
-                                            <input id="FiltrationRadio1a" type="radio" name="FiltrationStar1" value="5" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(1,"{{user_id}}"); elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio1a" type="radio" name="FiltrationStar1" value="5" class="star" onclick="toggleRadioButtonRadioA(this); Rating1();" onchange='changeCookiesForCheckBoxesA(1,"{{user_id}}"); elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio1a">&#9733;</label>
-                                            <input id="FiltrationRadio2a" type="radio" name="FiltrationStar1" value="4" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(2,"{{user_id}}");  elementFiltrationChange("CheckStars");' />
+                                            <input id="FiltrationRadio2a" type="radio" name="FiltrationStar1" value="4" class="star" onclick="toggleRadioButtonRadioA(this); Rating1();" onchange='changeCookiesForCheckBoxesA(2,"{{user_id}}");  elementFiltrationChange("CheckStars");' />
                                             <label for="FiltrationRadio2a">&#9733;</label>
-                                            <input id="FiltrationRadio3a" type="radio" name="FiltrationStar1" value="3" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio3a" type="radio" name="FiltrationStar1" value="3" class="star" onclick="toggleRadioButtonRadioA(this); Rating1();" onchange='changeCookiesForCheckBoxesA(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio3a">&#9733;</label>
-                                            <input id="FiltrationRadio4a" type="radio" name="FiltrationStar1" value="2" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio4a" type="radio" name="FiltrationStar1" value="2" class="star" onclick="toggleRadioButtonRadioA(this); Rating1();" onchange='changeCookiesForCheckBoxesA(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio4a">&#9733;</label>
-                                            <input id="FiltrationRadio5a" type="radio" name="FiltrationStar1" value="1" class="star" onclick="Rating1()" onchange='changeCookiesForCheckBoxesA(5,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
+                                            <input id="FiltrationRadio5a" type="radio" name="FiltrationStar1" value="1" class="star" onclick="toggleRadioButtonRadioA(this); Rating1(); " onchange='changeCookiesForCheckBoxesA(5,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio5a">&#9733;</label>
+                                            <input id="FiltrationRadio6a" type="radio" name="FiltrationStar1" value="0" style="display: none;" class="star" onclick="toggleRadioButtonRadioA(this); Rating1();" onchange='changeCookiesForCheckBoxesA(6,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked>
                                         </div>
                                         <span>do:</span>
                                         <div class="rating" style="margin-top: 5px;">
-                                            <input id="FiltrationRadio1b" type="radio" name="FiltrationStar2" value="5" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(1,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
+                                            <input id="FiltrationRadio1b" type="radio" name="FiltrationStar2" value="5" class="star" onclick="toggleRadioButtonRadioB(this); Rating2();" onchange='changeCookiesForCheckBoxesB(1,"{{user_id}}");  elementFiltrationChange("CheckStars");' checked/>
                                             <label for="FiltrationRadio1b">&#9733;</label>
-                                            <input id="FiltrationRadio2b" type="radio" name="FiltrationStar2" value="4" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(2,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio2b" type="radio" name="FiltrationStar2" value="4" class="star" onclick="toggleRadioButtonRadioB(this); Rating2();" onchange='changeCookiesForCheckBoxesB(2,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio2b">&#9733;</label>
-                                            <input id="FiltrationRadio3b" type="radio" name="FiltrationStar2" value="3" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio3b" type="radio" name="FiltrationStar2" value="3" class="star" onclick="toggleRadioButtonRadioB(this); Rating2();" onchange='changeCookiesForCheckBoxesB(3,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio3b">&#9733;</label>
-                                            <input id="FiltrationRadio4b" type="radio" name="FiltrationStar2" value="2" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio4b" type="radio" name="FiltrationStar2" value="2" class="star" onclick="toggleRadioButtonRadioB(this); Rating2();" onchange='changeCookiesForCheckBoxesB(4,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio4b">&#9733;</label>
-                                            <input id="FiltrationRadio5b" type="radio" name="FiltrationStar2" value="1" class="star" onclick="Rating2()" onchange='changeCookiesForCheckBoxesB(5,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
+                                            <input id="FiltrationRadio5b" type="radio" name="FiltrationStar2" value="1" class="star" onclick="toggleRadioButtonRadioB(this); Rating2();" onchange='changeCookiesForCheckBoxesB(5,"{{user_id}}");  elementFiltrationChange("CheckStars");'/>
                                             <label for="FiltrationRadio5b">&#9733;</label>
+                                            <input id="FiltrationRadio6b" type="radio" name="FiltrationStar2" value="0" style="display: none;" class="star" onclick="toggleRadioButtonRadioB(this); Rating2();" onchange='changeCookiesForCheckBoxesB(6,"{{user_id}}");  elementFiltrationChange("CheckStars");'>
                                         </div>
                                     </label>
                                 </div>
@@ -182,7 +186,7 @@
                         <span style="width: 20%;">{{(note.date.day)}}. {{(note.date.month)}}. {{(note.date.year)}}</span>
                         <span style="width: 30%;">{{note.language}}</span>
                         <span style="width: 15%;">{{note.interval}}</span>
-                        <span style="width: 20%;">{% for star in range(note.stars)%}&#9733;{% endfor %}</span>
+                        <span style="width: 20%;">{% for star in range(note.stars)%}&#9733;{% endfor %}{% for star in range(5-note.stars)%}<label style="color: white;">&#9733;</label>{% endfor %}</span>
                         <span style="width: 15%;">
                             <div class="popup" id="popup-delete{{note.id}}">
                                 <div class="overlay" onclick="stopPropagation(event);togglePopup()"></div>

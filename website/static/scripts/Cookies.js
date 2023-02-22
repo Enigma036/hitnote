@@ -140,8 +140,8 @@ function loadCookies(userId){
 
     // Začátek Hodnocení - Není to úplně cookies
     if (stars1 === null){
-        document.getElementById("FiltrationRadio5a").checked = true;
-        document.cookie = `FiltrationStarsA=5;`;
+        document.getElementById("FiltrationRadio6a").checked = true;
+        document.cookie = `FiltrationStarsA=6;`;
     }
     else{
         document.getElementById(`FiltrationRadio${checkCookie("FiltrationStarsA")}a`).checked = true;

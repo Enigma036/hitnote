@@ -24,7 +24,7 @@
 <body>
     <section class="user">
         <div class="main_title">
-            <button class="new_mess" type="button"  onclick=window.location.href='{{ url_for("views.home") }}';>&#8592</button>
+            <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("programmer.edit", cislo=current_user.id) }}';>&#8592</button>
             <br>
             <button class="button_add_user modern_button" onclick=window.location.href='{{ url_for("import_export.page")}}';>Import/Export</button>
         </div>

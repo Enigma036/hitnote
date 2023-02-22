@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from .models import User, Note
 from . import db
 import json
+import uuid
 
 messages = Blueprint("messages", __name__) 
     
@@ -25,6 +26,9 @@ def add():
         programator = request.form.get("AddProgrammer1")
         text = request.form.get("AddText1")
         
+        if not hodnoceni:
+            hodnoceni = 0
+        
         
         # ZAČÁTEK TESTOVÁNÍ VSTUPŮ
         try:
@@ -43,11 +47,11 @@ def add():
              er_succ_message = "Špatně zadaný programovací jazyk!"
              trida = "error"
 
-        elif hodnoceni == None or cas=="" or int(cas) < 1 or int(cas) > 1440:
+        elif cas == None or cas=="" or int(cas) < 1 or int(cas) > 1440:
             er_succ_message = "Špatně zadaný čas!"
             trida = "error"
             
-        elif hodnoceni == None or hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 1:
+        elif hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 0:
             er_succ_message = "Špatně zadané hodnocení!"
             trida = "error"   
             
@@ -66,7 +70,7 @@ def add():
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
             jazyk = jazyk.strip()
-            new_note = Note(date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = programator, data = text)
+            new_note = Note(id=str(uuid.uuid4()),date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = programator, data = text)
             db.session.add(new_note)
             db.session.commit()
                     
@@ -81,7 +85,7 @@ def edit(cislo):
     seznam = []
     for note in programmer_notes:
         seznam.append(note.id)
-    if int(cislo) not in seznam:
+    if cislo not in seznam:
         return redirect(url_for("views.home"))
     
     original_message = Note.query.filter_by(id=cislo).first_or_404()
@@ -98,6 +102,10 @@ def edit(cislo):
         hodnoceni = request.form.get("AddStar1")
         programator = request.form.get("AddProgrammer1")
         text = request.form.get("AddText1")
+        
+        
+        if not hodnoceni:
+            hodnoceni = 0
         
         
         # ZAČÁTEK TESTOVÁNÍ VSTUPŮ
@@ -121,7 +129,7 @@ def edit(cislo):
             er_succ_message = "Špatně zadaný čas!"
             trida = "error"
             
-        elif hodnoceni == None or hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 1:
+        elif hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 0:
             er_succ_message = "Špatně zadané hodnocení!"
             trida = "error"   
             
@@ -145,7 +153,7 @@ def edit(cislo):
             Note.query.filter_by(id=cislo).first_or_404().interval = cas
             Note.query.filter_by(id=cislo).first_or_404().stars = hodnoceni
             Note.query.filter_by(id=cislo).first_or_404().user_id = programator
-            Note.query.filter_by(id=cislo).first_or_404().data = text
+            Note.query.filter_by(id=cislo).first_or_404().data = text.strip()
             db.session.commit()
             
                     
@@ -160,7 +168,7 @@ def read(cislo):
     seznam = []
     for note in programmer_notes:
         seznam.append(note.id)
-    if int(cislo) not in seznam:
+    if cislo not in seznam:
         return redirect(url_for("views.home"))
     
     original_message = Note.query.filter_by(id=cislo).first_or_404()

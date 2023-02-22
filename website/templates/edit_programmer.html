@@ -96,21 +96,21 @@
                         <div class="add_input">
                             <span>Jméno a Přijmení</span> 
                             <br>
-                            <input class="text space font_size" type="text" id="AddNewProgrammer1" name="AddNewProgrammer1" value="{{original_programmer.jmeno}}">
+                            <input class="text space font_size" type="text" id="AddNewProgrammer1" name="AddNewProgrammer1" placeholder="{{original_programmer.jmeno}}">
                         </div>
                     </div>
                     <div class="above_message2">
                         <div class="add_input font_size">
                             <span>Uživatelské jméno</span> 
                             <br>
-                            <input class="text space font_size" placeholder="SimonHalasJablko" type="text" id="AddNewProgrammerUsername1" name="AddNewProgrammerUsername1" value="{{original_programmer.username}}">
+                            <input class="text space font_size" type="text" id="AddNewProgrammerUsername1" name="AddNewProgrammerUsername1" placeholder="{{original_programmer.username}}">
                         </div>
                     </div>
                     <div class="above_message2">
                         <div class="add_input">
                             <span>E-mail</span> 
                             <br>
-                            <input class="text space font_size" placeholder="AdamHladikDestiny@email.cz" type="email" id="AddNewProgrammerEmail1" name="AddNewProgrammerEmail1" value="{{original_programmer.email}}">
+                            <input class="text space font_size" type="email" id="AddNewProgrammerEmail1" name="AddNewProgrammerEmail1" placeholder="{{original_programmer.email}}">
                         </div>
                     </div>
                 </div>
@@ -134,12 +134,16 @@
                             <span>Role</span> 
                             <br>
                             <select class="languages space font_size" name="AddNewProgrammerRole1" id="AddNewProgrammerRole1">
-                                {% if original_programmer.role == "Administrátor" %}
+                                {% if admin_counter == 1 and original_programmer.role == "Administrátor" %}
                                 <option value="Administrátor">Administrátor</option>
-                                <option value="Uživatel">Uživatel</option>
                                 {% else %}
-                                <option value="Uživatel">Uživatel</option>
-                                <option value="Administrátor">Administrátor</option>
+                                    {% if original_programmer.role == "Administrátor" %}
+                                    <option value="Administrátor">Administrátor</option>
+                                    <option value="Uživatel">Uživatel</option>
+                                    {% else %}
+                                    <option value="Uživatel">Uživatel</option>
+                                    <option value="Administrátor">Administrátor</option>
+                                    {% endif %}
                                 {% endif %}
                             </select>
                         </div>
@@ -149,7 +153,7 @@
                     <span class="{{trida}}">{{ message }}</span>
                 </div>
                 <div class="add_input"  style="margin-top: 0;">
-                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Uložit uživatele"/>
+                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Uložit změny"/>
                 </div>
             </form>
         </div>

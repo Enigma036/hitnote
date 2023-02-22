@@ -17,6 +17,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Checker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/StarsRaiting.js') }}"></script>
     <title>Přidej zprávu</title>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -64,17 +65,17 @@
                             <span>Hodnocení</span>
                             <br>
                             <div class="rating space">
-                                <input id="AddRadio1" type="radio" name="AddStar1" value="5" class="star" />
+                                <input id="AddRadio1" type="radio" name="AddStar1" value="5" class="star" onclick="toggleRadioButton(this);" />
                                 <label for="AddRadio1">&#9733;</label>
-                                <input id="AddRadio2" type="radio" name="AddStar1" value="4" class="star" />
+                                <input id="AddRadio2" type="radio" name="AddStar1" value="4" class="star" onclick="toggleRadioButton(this);" />
                                 <label for="AddRadio2">&#9733;</label>
-                                <input id="AddRadio3" type="radio" name="AddStar1" value="3" class="star" />
+                                <input id="AddRadio3" type="radio" name="AddStar1" value="3" class="star" onclick="toggleRadioButton(this);" />
                                 <label for="AddRadio3">&#9733;</label>
-                                <input id="AddRadio4" type="radio" name="AddStar1" value="2" class="star" />
+                                <input id="AddRadio4" type="radio" name="AddStar1" value="2" class="star" onclick="toggleRadioButton(this);" />
                                 <label for="AddRadio4">&#9733;</label>
-                                <input id="AddRadio5" type="radio" name="AddStar1" value="1" class="star" checked />
+                                <input id="AddRadio5" type="radio" name="AddStar1" value="1" class="star" onclick="toggleRadioButton(this);" />
                                 <label for="AddRadio5">&#9733;</label>
-                            </div>
+                              </div>
                         </div>
                     </div>
                     <div class="above_message">

@@ -42,8 +42,8 @@ function Interval2(x, y){
 }
 
 function Rating1(){
-    var rating1 = document.getElementById(Checked('a')).value;
-    var rating2 = document.getElementById(Checked('b')).value;
+    var rating1 = document.getElementById(CheckedRadio('a')).value;
+    var rating2 = document.getElementById(CheckedRadio('b')).value;
     var id = 0;
     if(parseInt(rating1) > parseInt(rating2)){
         id = 'FiltrationRadio' + (6-rating2) + 'a';
@@ -52,18 +52,20 @@ function Rating1(){
 }
 
 function Rating2(){
-    var rating1 = document.getElementById(Checked('b')).value;
-    var rating2 = document.getElementById(Checked('a')).value;
+    var rating1 = document.getElementById(CheckedRadio('b')).value;
+    var rating2 = document.getElementById(CheckedRadio('a')).value;
+    
     var id = 0;
+
     if(parseInt(rating1) < parseInt(rating2)){
         id = 'FiltrationRadio' + (6-rating2) + 'b';
         document.getElementById(id).checked = true;
     }
 }
 
-function Checked(x){
-    for(var i = 1; i <= 5;i++){
-        var id = 'FiltrationRadio' + (6-i) + x;
+function CheckedRadio(x){
+    for(var i = 0; i <= 5;i++){
+        var id = `FiltrationRadio${(6-i)}${x}`;
         if(document.getElementById(id).checked == true){
             return id;
         }

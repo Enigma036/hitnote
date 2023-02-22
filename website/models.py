@@ -1,9 +1,10 @@
 from . import db
+import uuid
 from flask_login import UserMixin
 
 
 class Note(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.String(40),primary_key=True,default=str(uuid.uuid4()))
     date = db.Column(db.Date)
     language = db.Column(db.String(35))
     interval = db.Column(db.Integer)
