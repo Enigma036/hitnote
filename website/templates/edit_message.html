@@ -18,6 +18,11 @@
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/StarsRating.js') }}"></script>
     <title>Uprav zprávu</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setPreviousValues();
+        });
+    </script>
 </head>
 <body>
     <section class="messages">

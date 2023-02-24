@@ -191,7 +191,7 @@ def edit(cislo):
             print(1)      
             if (not jmeno_bool and not username_bool and not email_bool and not role_bool and not pass_bool) and ((jmeno or username or email or (pass1 and pass2)) or role):
                 print(2)
-                er_succ_message = f"Programátor byl upraven! {check_text}"
+                er_succ_message = f"Uživatel byl upraven! {check_text}"
                 trida = "success"
                 db.session.commit()
                 #return redirect(url_for("views.main_window", user = cislo))

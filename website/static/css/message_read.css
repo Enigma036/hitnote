@@ -84,6 +84,24 @@ button.new_mess:hover{
     color: #1DA1F2;
 }
 
+div.username textarea{
+    border: 0;
+    resize: none;
+    width: 100%;
+    height: 250px;
+    border-color: #1DA1F2;
+    background-color: #14171A;
+    font-size: 25px;
+    color: #1DA1F2;
+    font-size: 30px;
+    text-align: justify;
+    margin: 5px;
+    color: white;
+    word-wrap: break-word;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}
+
 .right{
     margin-left: auto;
 }

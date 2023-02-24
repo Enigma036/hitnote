@@ -1,4 +1,4 @@
 instance/
 local/
 .idea/
-app/__pycache__/
+website/__pycache__/

@@ -24,7 +24,7 @@ def add():
         cas = request.form.get("AddInterval1")
         hodnoceni = request.form.get("AddStar1")
         programator = request.form.get("AddProgrammer1")
-        text = request.form.get("AddText1")
+        text = request.form.get("AddText1").strip()
         
         if not hodnoceni:
             hodnoceni = 0
@@ -69,7 +69,6 @@ def add():
             er_succ_message = "Zpráva byla vytvořena"
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
-            jazyk = jazyk.strip()
             new_note = Note(id=str(uuid.uuid4()),date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = programator, data = text)
             db.session.add(new_note)
             db.session.commit()
@@ -101,7 +100,7 @@ def edit(cislo):
         cas = request.form.get("AddInterval1")
         hodnoceni = request.form.get("AddStar1")
         programator = request.form.get("AddProgrammer1")
-        text = request.form.get("AddText1")
+        text = request.form.get("AddText1").strip()
         
         
         if not hodnoceni:
@@ -147,13 +146,12 @@ def edit(cislo):
             er_succ_message = "Zpráva byla upravena"
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
-            jazyk = jazyk.strip()
             Note.query.filter_by(id=cislo).first_or_404().date = datum
             Note.query.filter_by(id=cislo).first_or_404().language = jazyk
             Note.query.filter_by(id=cislo).first_or_404().interval = cas
             Note.query.filter_by(id=cislo).first_or_404().stars = hodnoceni
             Note.query.filter_by(id=cislo).first_or_404().user_id = programator
-            Note.query.filter_by(id=cislo).first_or_404().data = text.strip()
+            Note.query.filter_by(id=cislo).first_or_404().data = text
             db.session.commit()
             
                     
