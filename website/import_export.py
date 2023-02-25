@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, send_file, redirect, url_for, jsonify, request
 from flask import make_response
 from flask_login import login_required, current_user
-from datetime import datetime
+from datetime import datetime, date
 from .models import Note, User
 from website import create_first_user
 from .sort_and_filtration import filtrateNotes, getFormData, getSortData, sort_items
@@ -59,7 +59,7 @@ def page():
                     for row in reader:
                         try:
                             ajdy = row[0]
-                            datum = datetime.strptime(row[1], '%Y-%m-%d').date()
+                            datum = datetime.strptime(row[1], '%d-%m-%Y').date()
                             cas = row[2]
                             jazyk = row[3]
                             hodnoceni = row[4]
@@ -118,10 +118,10 @@ def page():
                     
         # Když zmáčkne na tlačítko export
         elif import_export_messsage == "EXPORT":
-            try:
+            if True:
                 db_name = "instance/database.db"
                 table_name = 'note'
-                output_file = 'output.csv'
+                output_file = current_user.username + "-" + str(date.today()) + ".csv"
                 conn = sqlite3.connect(db_name)
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM " + table_name)
@@ -134,23 +134,25 @@ def page():
                     for row in rows:
                         row_list = list(row)
                         if row_list[5] == current_user.id:
+                            row_list[1] = datetime.strptime(row_list[1], '%Y-%m-%d')
+                            row_list[1] = row_list[1].strftime('%d-%m-%Y')
                             row_list[2], row_list[3] = row_list[3], row_list[2]
                             del row_list[5]
                             row_list[5] = row_list[5].replace("\r", "\\r").replace("\n", "\\n").strip()
                             writer.writerow(row_list)
 
-                output_file = "../output.csv"
+                output_file = "../" + output_file
                 response = send_file(output_file, as_attachment=True)
 
                 return response
             
-            except:
+            if False:
                 error_message2 = "Nastala chyba při exportování souboru"
                 trida2 = "error"
     
     
     try:
-        os.remove("output.csv")
+        os.remove(output_file)
     except:
         pass
     
