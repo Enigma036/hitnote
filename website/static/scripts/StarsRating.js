@@ -29,7 +29,8 @@ function toggleRadioButton(radio) {
           radio.checked = false;
           radio.setAttribute('previousValue', false);
           document.getElementById("FiltrationRadio6a").checked = true;
-          changeCookiesForCheckBoxesA("6",1)
+          changeCookiesForCheckBoxesA("6",1);
+          elementFiltrationChange("CheckStars");
     } else {
       radioButtons.forEach(function(radio) {
         radio.setAttribute('previousValue', false);
@@ -54,6 +55,7 @@ function toggleRadioButton(radio) {
         radio.setAttribute('previousValue', false);
         document.getElementById("FiltrationRadio6b").checked = true;
         changeCookiesForCheckBoxesB("6",1);
+        elementFiltrationChange("CheckStars");
       }
     } else {
       radioButtons.forEach(function(radio) {

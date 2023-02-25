@@ -27,6 +27,12 @@ def page():
     error_message2 = "Zprava"
     trida2 = "none"
     
+    message = []
+    
+    pocet_importovanych = 0
+    pocet_spatnych = 0
+    pocet_zmenenych = 0
+    
     if request.method == "POST":
         import_export_messsage = request.form.get('ImportExportMessage')
         
@@ -44,7 +50,7 @@ def page():
                 input = request.files["input_file"]
                 input.save(input.filename)
 
-                error_message1 = "Soubor úspěšně importován"
+                error_message1 = "Soubor byl úspěšně importován"
                 trida1 = "success"
 
                 with open(input.filename, 'r', newline="", encoding="utf-8-sig") as csv_file:
@@ -61,13 +67,14 @@ def page():
                             
                             text = text.replace("\\r\\n", "\n").replace("\\n","\n")
                             
-                            
                             if Note.query.filter_by(id=ajdy).all() == []:
                                 new_note = Note(id = ajdy, date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = current_user.id, data = text)
+                                pocet_importovanych += 1
                             else:
                                 new_note = Note(id=str(uuid.uuid4()), date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = current_user.id, data = text)
-                                error_message1 = "Aby nedošlo ke kolizi, muselo být id alespoň jedné zprávy změněno"
+                                error_message1 = "Aby nedošlo ke kolizi, muselo být ID alespoň jedné zprávy změněno"
                                 trida1 = "error"
+                                pocet_zmenenych += 1
                                 
                             db.session.add(new_note)
                             db.session.commit()
@@ -75,8 +82,30 @@ def page():
                         except:
                             error_message1 = "Nepodařilo se importovat některé zprávy"
                             trida1 = "error"
+                            pocet_spatnych += 1
                 
                 os.remove(input.filename)
+                
+                
+                if pocet_importovanych and not pocet_zmenenych and not pocet_spatnych:
+                    error_message1 = "Soubor byl úspěšně importován"
+                    trida1 = "success"
+                else:
+                    trida1 = "error"
+                    if pocet_importovanych:
+                        message.append(f"Bylo importováno {pocet_importovanych} záznam/ů")
+                    if pocet_zmenenych:
+                        message.append(f"U {pocet_zmenenych} záznamu/ů bylo změněno ID")
+                    if pocet_spatnych:
+                        message.append(f"{pocet_spatnych} záznam/ů nebyl/o importováno")
+                
+                if message:
+                    for i in range(len(message)):
+                        if i == 0:
+                            error_message1 = message[i]
+                        else:
+                            error_message1 += "<br>" + message[i]
+                            
             except:
                 error_message1 = "Nepodařilo se nahrát soubor"
                 trida1 = "error"
@@ -115,10 +144,9 @@ def page():
 
                 return response
             
-            except Exception as e:
+            except:
                 error_message2 = "Nastala chyba při exportování souboru"
                 trida2 = "error"
-                print(e)
     
     
     try:

@@ -16,10 +16,11 @@ api = Blueprint("api", __name__)
 
 @api.route("/users/<string:user_id>/records/<string:record_id>",  methods=['GET', 'PUT','DELETE'])
 def record(user_id, record_id):
+    
     if request.method == "PUT":
         note = Note.query.filter_by(id=record_id, user_id=user_id).first()
         if note:
-            try:
+            if True:
                 data = request.get_json()
                 
                 new_id = (data["id"])
@@ -29,7 +30,7 @@ def record(user_id, record_id):
                 new_stars = data["rating"]
                 new_data = data["description"]
                 
-                if new_id == None or Note.query.filter_by(id = new_id).first():
+                if new_id == None or (Note.query.filter_by(id = new_id).first() != Note.query.filter_by(id = new_id, user_id = user_id).first()):
                     abort(404)    
                 elif new_date == None:
                     abort(404)
@@ -49,10 +50,9 @@ def record(user_id, record_id):
                     note.stars = new_stars
                     note.data = new_data
                     db.session.commit()
-                    
+                    json_soubor = {'id': str(new_id), 'date': str(new_date),'time-spent': str(new_interval), 'programming-language': new_language, 'rating': new_stars, 'description': new_data}
                     return jsonify(json_soubor), 200
-            
-            except:
+        if False:
                 abort(404)
         else:
             abort(404)
@@ -64,7 +64,7 @@ def record(user_id, record_id):
         if note:
             db.session.delete(note)
             db.session.commit()
-            return jsonify({}), 200
+            return "", 200
         else:
             abort(404)
     

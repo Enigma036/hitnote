@@ -43,7 +43,11 @@
                     <input name="input_file" type="file" accept=".csv">
                 </div>
                 <div class="error_messages">
-                    <span class="{{trida1}}">{{ message_import }}</span>
+                    <div class="{{trida1}}">
+                        {% autoescape false %}
+                            {{ message_import }}
+                        {% endautoescape %}
+                    </div>
                 </div>
                 <div class="add_input">
                     <input type="submit" class="button_add_user" value="Importovat zprávy"/>

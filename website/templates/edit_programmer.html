@@ -40,9 +40,9 @@
             </div>
             <div class="user_items">
                 {% if current_user.id == user_id %}
-                <div class="user_info_forever" onclick=window.location.href='{{ url_for("views.home") }}';>
+                <div class="user_info_forever" onclick=window.location.href='{{ url_for("programmer.edit", cislo = current_user.id ) }}';>
                 {% else %}
-                <div class="user_info" onclick=window.location.href='{{ url_for("views.home") }}';>
+                <div class="user_info" onclick=window.location.href='{{ url_for("programmer.edit", cislo = current_user.id ) }}';>
                 {% endif %}
                     <span style="width: 40%;">{{current_user.jmeno}}</span>
                     <span style="width: 30%;">{{current_user.role}}</span>
@@ -62,9 +62,9 @@
                 {% for programmer in programmers %}
                 {% if programmer.id != current_user.id %}
                     {% if programmer.id == user_id %}
-                        <div class="user_info_forever" onclick=window.location.href='{{ url_for("views.home") }}';>
+                        <div class="user_info_forever" onclick=window.location.href='{{ url_for("programmer.edit", cislo = programmer.id ) }}';>
                     {% else %}
-                        <div class="user_info" onclick=window.location.href='{{ url_for("views.home") }}';>
+                        <div class="user_info" onclick=window.location.href='{{ url_for("programmer.edit", cislo = programmer.id ) }}';>
                     {% endif %}
                         <span style="width: 40%;">{{programmer.jmeno}}</span>
                         <span style="width: 30%;">{{programmer.role}}</span>
