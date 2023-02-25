@@ -54,7 +54,7 @@ def page():
                 trida1 = "success"
 
                 with open(input.filename, 'r', newline="", encoding="utf-8-sig") as csv_file:
-                    reader = csv.reader(csv_file)
+                    reader = csv.reader(csv_file, delimiter=';')
 
                     for row in reader:
                         try:
@@ -118,7 +118,7 @@ def page():
                     
         # Když zmáčkne na tlačítko export
         elif import_export_messsage == "EXPORT":
-            if True:
+            try:
                 db_name = "instance/database.db"
                 table_name = 'note'
                 output_file = current_user.username + "-" + str(date.today()) + ".csv"
@@ -130,7 +130,7 @@ def page():
                 conn.close()
                 
                 with open(output_file, 'w', newline='', encoding='utf-8-sig') as csv_file:
-                    writer = csv.writer(csv_file)
+                    writer = csv.writer(csv_file, delimiter=';')
                     for row in rows:
                         row_list = list(row)
                         if row_list[5] == current_user.id:
@@ -146,7 +146,7 @@ def page():
 
                 return response
             
-            if False:
+            except:
                 error_message2 = "Nastala chyba při exportování souboru"
                 trida2 = "error"
     
