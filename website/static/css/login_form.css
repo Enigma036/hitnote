@@ -163,3 +163,21 @@ div.messages{
   margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 500px) {
+  .center{
+    width: 300px;
+  }
+
+  .error{
+    font-size: 15px;
+  }
+
+  .success{
+    font-size: 15px;
+  }
+
+  .txt_field input{
+    font-size: 14px;
+  }
+}
+
