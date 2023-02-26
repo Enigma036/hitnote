@@ -28,3 +28,27 @@
   .star_label{
     color: #46545d;
   }
+
+  @media (max-width: 1100px) {
+    .rating label{
+        font-size: 17px;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .rating label{
+        font-size: 30px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .rating label{
+        font-size: 25px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .rating label{
+        font-size: 20px;
+    }
+  }

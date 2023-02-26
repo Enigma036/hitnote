@@ -55,7 +55,7 @@
             <!--FILTRACE-->
                 <div class="message_filters">
                     <h2>Filtrace</h2>
-                    <div style="display: flex; height: 100%; margin-left: 10%; margin-right: 10%;">
+                    <div class="for_filtration">
                         <div class="message_filters_item">
                             <div>
                                 <div style="margin-top: 20px; margin-bottom: auto; display: flex;">
@@ -67,7 +67,7 @@
                                         <input class="date" type="date" id="FiltrationDate2" name="FiltrationDate2" value="2023-01-01" onblur="Date2(); changeCookies('FiltrationDate2','{{user_id}}'); elementFiltrationChange('CheckDate');">
                                     </label>
                                 </div>
-                            <br>
+                                <br>
                                 <div style="margin-top: auto; margin-bottom: auto; display: flex;">
                                     <input class="checkbox" type="checkbox" id="CheckInterval" name="CheckInterval" onchange="changeCookiesForCheckBoxes('CheckInterval','{{user_id}}'); activeForm('FormFiltration1');">
                                     <label for="CheckInterval">
@@ -81,7 +81,7 @@
                         </div>
                         <div class="message_filters_item">
                             <div>
-                                <div style="margin-top: 20px; margin-bottom: auto; margin-left: 100px; display: flex;">
+                                <div class="programming_div">
                                     <input class="checkbox" type="checkbox" id="CheckLanguages" name="CheckLanguages" onchange="changeCookiesForCheckBoxes('CheckLanguages','{{user_id}}'); activeForm('FormFiltration1');">
                                     <label for="CheckLanguage">
                                         <span>Programovací jazyk:</span> 
@@ -93,7 +93,7 @@
                                     </label>
                                 </div>
                                 <br>
-                                <div style="margin-top: auto; margin-bottom: auto;  margin-left: 100px; display: flex;">
+                                <div class="for_stars">
                                     <input class="checkbox" type="checkbox" id="CheckStars" name="CheckStars" onchange="changeCookiesForCheckBoxes('CheckStars','{{user_id}}');activeForm('FormFiltration1');">
                                     <label for="CheckStars" style="display: flex;">
                                         <span>Hodnocení od:</span>

@@ -70,3 +70,80 @@ input.button_add_user:hover{
   background: #14171A;
   color: #1DA1F2;
 }
+
+@media (max-width: 1100px) {
+  input.date{
+    font-size: 15px;
+  }
+
+  input.interval{
+    font-size: 15px;
+  }
+
+  select.languages{
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 850px) {
+  input.date{
+    font-size: 25px;
+  }
+
+  input.interval{
+    font-size: 25px;
+  }
+
+  select.languages{
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  input.date{
+    font-size: 20px;
+  }
+
+  input.interval{
+    font-size: 20px;
+  }
+
+  select.languages{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  input.date{
+    font-size: 15px;
+  }
+
+  input.interval{
+    font-size: 15px;
+  }
+
+  select.languages{
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  input.date{
+    font-size: 12px;
+  }
+
+  input.interval{
+    font-size: 12px;
+  }
+
+  select.languages{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 370px) {
+  input.date{
+    font-size: 10px;
+  }
+}

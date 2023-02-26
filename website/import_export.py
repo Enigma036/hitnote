@@ -141,19 +141,26 @@ def page():
                             row_list[5] = row_list[5].replace("\r", "\\r").replace("\n", "\\n").strip()
                             writer.writerow(row_list)
 
+                csv_file.close()
+                
                 output_file = "../" + output_file
                 response = send_file(output_file, as_attachment=True)
 
                 return response
-            
+        
             except:
                 error_message2 = "Nastala chyba při exportování souboru"
                 trida2 = "error"
     
-    
     try:
-        os.remove(output_file)
+        folder_path = os.getcwd()
+        for file_name in os.listdir(folder_path):
+            print(file_name)
+            if file_name.endswith(".csv") and file_name.startswith(str(current_user.username)):
+                os.remove(os.path.join(folder_path, file_name))
     except:
         pass
+        
+
     
     return render_template("import_export.html", programmer = current_user, message_import = error_message1, message_export = error_message2, trida1 = trida1, trida2 = trida2)

@@ -76,6 +76,13 @@ div.message_button{
     height: 40%;    
 }
 
+div.for_stars{
+    margin-top: auto; 
+    margin-bottom: auto;  
+    margin-left: 100px; 
+    display: flex;
+}
+
 div.message_filters{
     text-align: center;
     width: 100%;
@@ -106,6 +113,13 @@ div.message_filters_item label{
 div.message_filters_item span{
     color: #1DA1F2;
     margin: 5px;
+}
+
+div.for_filtration{
+    display: flex; 
+    height: 100%; 
+    margin-left: 10%; 
+    margin-right: 10%;
 }
 
 div.message_list{
@@ -186,3 +200,140 @@ div.message_list_info span{
     text-align: center;
     font-size: 20px;
 }
+
+div.programming_div{
+    margin-top: 20px; 
+    margin-bottom: auto; 
+    margin-left: 100px; 
+    display: flex;
+}
+
+
+
+@media (max-width: 1100px) {
+    div.message_filters_item{
+        font-size: 20px;
+    }
+  }
+
+@media (max-width: 850px) {
+    div.message_filters_item{
+        justify-content: left;
+        text-align: left;
+        font-size: 35px;
+        margin-top: 20px;
+    }
+    
+    div.for_filtration{
+        display: inline-block;
+    }
+
+    div.programming_div{
+        margin-left: 0;
+    }
+
+    div.for_stars{
+        margin-left: 0;
+    }
+
+  }
+
+  @media (max-width: 700px) {
+    div.message_filters_item{
+        font-size: 25px;
+    }
+
+    div.message_list_head th{
+        font-size: 17px;
+    }
+  }
+
+
+  @media (max-width: 550px) {
+    div.message_filters_item{
+        font-size: 20px;
+    }
+
+    div.message_list_head th{
+        font-size: 16px;
+    }
+
+    div.username{
+        font-size: 35px;
+    }
+
+    button.log_out{
+        font-size: 35px;
+        padding: 5px 25px;
+    }
+
+    button.new_mess{
+        font-size: 35px;
+        padding: 5px 25px;
+    }
+
+  }
+
+  @media (max-width: 450px) {
+
+    div.message_list_head th{
+        font-size: 13px;
+    }
+
+    div.username{
+        font-size: 25px;
+    }
+
+    button.log_out{
+        font-size: 25px;
+        padding: 5px 20px;
+    }
+
+    button.new_mess{
+        font-size: 25px;
+        padding: 5px 20px;
+    }
+
+    div.message_list_info span{
+        font-size: 13px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    div.message_list_head th{
+        font-size: 11px;
+    }
+  }
+
+  @media (max-height: 900px){
+    div.message_filters h2{
+        font-size: 25px;
+    }
+
+    
+    div.message_head{
+        height: 14%;
+    }
+  }
+
+  @media (max-height: 750px){
+    div.message_list{
+        height: 40%;
+    }
+  }
+
+
+  @media (max-height: 550px){
+    div.message_filters h2{
+        font-size: 20px;
+    }
+
+    div.message_head{
+        height: 12%;
+    }
+  }
+
+
+  
+  
+
