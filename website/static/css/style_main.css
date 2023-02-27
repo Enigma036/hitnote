@@ -6,6 +6,7 @@
 
 html{
     height: 97%;
+    overflow-y: auto;
 }
 
 body{
