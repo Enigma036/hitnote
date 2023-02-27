@@ -59,29 +59,50 @@ def page():
                     for row in reader:
                         try:
                             ajdy = row[0]
-                            datum = datetime.strptime(row[1], '%d-%m-%Y').date()
+                            try:
+                                datum = datetime.strptime(row[1], '%d-%m-%Y').date()
+                            except:
+                                datum = datetime.strptime(row[1], '%d.%m.%Y').date()
                             cas = row[2]
                             jazyk = row[3]
                             hodnoceni = row[4]
                             text = row[5]
                             
                             text = text.replace("\\r\\n", "\n").replace("\\n","\n")
+
+                            try:
+                                datetime(year=int(datum.year),month=int(datum.month),day=int(datum.day))
                             
-                            if Note.query.filter_by(id=ajdy).all() == []:
-                                new_note = Note(id = ajdy, date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = current_user.id, data = text)
-                                pocet_importovanych += 1
-                            else:
-                                new_note = Note(id=str(uuid.uuid4()), date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = current_user.id, data = text)
-                                error_message1 = "Aby nedošlo ke kolizi, muselo být ID alespoň jedné zprávy změněno"
-                                trida1 = "error"
-                                pocet_zmenenych += 1
+                            except:
+                                pocet_spatnych += 1
                                 
-                            db.session.add(new_note)
-                            db.session.commit()
+                            if jazyk == None or jazyk.isspace() or len(jazyk) < 1 or len(jazyk) > 30:
+                                pocet_spatnych += 1
+
+                            elif cas == None or cas=="" or int(cas) < 1 or int(cas) > 1440:
+                                pocet_spatnych += 1
+                                
+                            elif hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 0:
+                                pocet_spatnych += 1
+                            
+                            elif text == None or len(text) < 1 or len(text) > 300 or text.isspace():
+                                pocet_spatnych += 1
+
+                            else:
+                            
+                                if Note.query.filter_by(id=ajdy).all() == []:
+                                    new_note = Note(id = ajdy, date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = current_user.id, data = text)
+                                    pocet_importovanych += 1
+                                else:
+                                    new_note = Note(id=str(uuid.uuid4()), date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = current_user.id, data = text)
+                                    error_message1 = "Aby nedošlo ke kolizi, muselo být ID alespoň jedné zprávy změněno"
+                                    trida1 = "error"
+                                    pocet_zmenenych += 1
+                                
+                                db.session.add(new_note)
+                                db.session.commit()
                             
                         except:
-                            error_message1 = "Nepodařilo se importovat některé zprávy"
-                            trida1 = "error"
                             pocet_spatnych += 1
                 
                 os.remove(input.filename)
