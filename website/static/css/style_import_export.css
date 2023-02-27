@@ -112,6 +112,7 @@ h1.main_title{
     color: #1DA1F2;
     padding-top: 30px;
     text-align: center;
+    transition-duration: 0.4s;
 }
 
 h2.main_title{
@@ -120,6 +121,7 @@ h2.main_title{
     color: #1DA1F2;
     padding-top: 50px;
     text-align: center;
+    transition-duration: 0.4s;
 }
 
 div.add_input{
@@ -169,7 +171,7 @@ input[type=file] {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width:auto;
     max-width: 100%;
     color: #1DA1F2;
     padding: 5px;
@@ -177,6 +179,7 @@ input[type=file] {
     border-radius: 15px;
     border: 2px solid #1DA1F2;
     font-size: 20px;
+    transition-duration: 0.4s;
   }
 
 input[type=file]::file-selector-button {
@@ -195,3 +198,152 @@ input[type=file]::file-selector-button {
     background: #14171A;
     color: #1DA1F2;
   }
+
+@media (max-width: 1200px) {
+  h1.main_title{
+    font-size: 55px;
+  }
+  h2.main_title{
+    font-size: 38px;
+  }
+  input.button_add_user{
+    font-size: 23px;
+  }
+  input[type=file] {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1075px) {
+  h1.main_title{
+    font-size: 50px;
+  }
+  h2.main_title{
+    font-size: 36px;
+  }
+  input.button_add_user{
+    font-size: 21px;
+  }
+  input[type=file] {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1000px) {
+  h1.main_title{
+    font-size: 45px;
+  }
+  h2.main_title{
+    font-size: 34px;
+  }
+  input.button_add_user{
+    font-size: 19px;
+  }
+  input[type=file] {
+    font-size: 14px;
+  }
+}
+@media (max-width: 925px) {
+  h1.main_title{
+    font-size: 42px;
+  }
+  h2.main_title{
+    font-size: 32px;
+  }
+  input.button_add_user{
+    font-size: 17px;
+  }
+  input[type=file] {
+    font-size: 12px;
+    min-width: 30%;
+  }
+}
+@media (max-width: 875px) {
+  h1.main_title{
+    font-size: 39px;
+  }
+  h2.main_title{
+    font-size: 30px;
+  }
+  input.button_add_user{
+    font-size: 15px;
+  }
+  input[type=file] {
+    font-size: 10px;
+  }
+}
+@media (max-width: 815px) {
+  h1.main_title{
+    font-size: 35px;
+  }
+  h2.main_title{
+    font-size: 29px;
+  }
+  input.button_add_user{
+    font-size: 14px;
+  }
+  input[type=file] {
+    font-size: 9px;
+    min-width: 32%;
+  }
+}
+@media (max-width: 715px) {
+  h1.main_title{
+    font-size: 32px;
+  }
+  input[type=file] {
+    min-width: 35%;
+  }
+}
+@media (max-width: 650px) {
+  h1.main_title{
+    font-size: 27px;
+  }
+  input[type=file] {
+    min-width: 40%;
+  }
+}
+@media (max-width: 550px) {
+  h1.main_title{
+    font-size: 23px;
+  }
+  input[type=file] {
+    min-width: 48%;
+  }
+  div.error{
+    font-size: 18px;
+  }
+}
+@media (max-width: 450px) {
+  h1.main_title{
+    font-size: 20px;
+  }
+  input[type=file] {
+    min-width: 55%;
+  }
+}
+@media (max-width: 400px) {
+  h1.main_title{
+    font-size: 17px;
+  }
+  h2.main_title{
+    font-size: 22px;
+  }
+  input.button_add_user{
+    font-size: 12px;
+  }
+  input[type=file] {
+    font-size: 9px;
+    min-width: 62%;
+  }
+  div.error{
+    font-size: 16px;
+  }
+}
+@media (max-width: 350px) {
+  h1.main_title{
+    font-size: 14px;
+  }
+  input[type=file] {
+    font-size: 7.5px;
+    min-width: 70%;
+  }
+}
