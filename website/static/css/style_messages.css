@@ -208,11 +208,28 @@ div.programming_div{
     display: flex;
 }
 
+@media (max-width: 1300px) {
+    div.message_filters_item{
+        font-size: 20px;
+    }
+  }
 
 
 @media (max-width: 1100px) {
     div.message_filters_item{
-        font-size: 20px;
+        font-size: 18px;
+    }
+  }
+
+  @media (max-width: 990px) {
+    div.message_filters_item{
+        font-size: 16px;
+    }
+  }
+
+  @media (max-width: 990px) {
+    div.message_filters_item{
+        font-size: 13px;
     }
   }
 
@@ -220,7 +237,7 @@ div.programming_div{
     div.message_filters_item{
         justify-content: left;
         text-align: left;
-        font-size: 35px;
+        font-size: 30px;
         margin-top: 20px;
     }
     
@@ -238,7 +255,7 @@ div.programming_div{
 
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 780px) {
     div.message_filters_item{
         font-size: 25px;
     }
@@ -246,12 +263,25 @@ div.programming_div{
     div.message_list_head th{
         font-size: 17px;
     }
+
+    div.username{
+        font-size: 30px;
+    }
+
+    button.log_out{
+        font-size: 30px;
+        padding: 5px 20px;
+    }
+
+    button.new_mess{
+        font-size: 30px;
+        padding: 5px 20px;
+    }
   }
 
-
-  @media (max-width: 550px) {
+  @media (max-width: 700px) {
     div.message_filters_item{
-        font-size: 20px;
+        font-size: 22px;
     }
 
     div.message_list_head th{
@@ -259,55 +289,107 @@ div.programming_div{
     }
 
     div.username{
-        font-size: 35px;
-    }
-
-    button.log_out{
-        font-size: 35px;
-        padding: 5px 25px;
-    }
-
-    button.new_mess{
-        font-size: 35px;
-        padding: 5px 25px;
-    }
-
-  }
-
-  @media (max-width: 450px) {
-
-    div.message_list_head th{
-        font-size: 13px;
-    }
-
-    div.username{
         font-size: 25px;
     }
 
     button.log_out{
-        font-size: 25px;
-        padding: 5px 20px;
+        font-size: 22px;
+        padding: 5px 18px;
     }
 
     button.new_mess{
-        font-size: 25px;
-        padding: 5px 20px;
+        font-size: 22px;
+        padding: 5px 18px;
     }
 
     div.message_list_info span{
-        font-size: 13px;
+        font-size: 14px;
+    }
+
+  }
+
+
+  @media (max-width: 600px) {
+    div.message_filters_item{
+        font-size: 20px;
+    }
+
+    div.message_list_head th{
+        font-size: 14px;
+    }
+
+    div.username{
+        font-size: 20px;
+    }
+
+    button.log_out{
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+
+    button.new_mess{
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+
+    div.message_list_info span{
+        font-size: 10px;
+    }
+
+  }
+
+  @media (max-width: 600px) {
+    div.message_list_head th{
+        font-size: 10px;
+    }
+
+    div.message_list_info span{
+        font-size: 10px;
+    }
+
+  }
+
+  @media (max-width: 500px) {
+    div.message_filters_item{
+        font-size: 15px;
+    }
+
+    div.username{
+        font-size: 15px;
+    }
+
+    button.log_out{
+        font-size: 15px;
+        padding: 5px 8px;
+    }
+
+    button.new_mess{
+        font-size: 15px;
+        padding: 5px 8px;
+    }
+
+    div.message_list_info span{
+        font-size: 10px;
     }
   }
 
-  @media (max-width: 400px) {
+
+
+  @media (max-width: 420px) {
+    div.message_filters_item{
+        font-size: 13px;
+    }
+
     div.message_list_head th{
-        font-size: 11px;
+        font-size: 8px;
     }
   }
+
+
 
   @media (max-height: 900px){
     div.message_filters h2{
-        font-size: 25px;
+        font-size: 20px;
     }
 
     
@@ -318,19 +400,28 @@ div.programming_div{
 
   @media (max-height: 750px){
     div.message_list{
-        height: 40%;
+        height: 45%;
+    }
+    div.message_head{
+        height: 14%;
+    }
+    
+    div.message_list{
+        height: 35%;
     }
   }
 
 
   @media (max-height: 550px){
     div.message_filters h2{
-        font-size: 20px;
+        font-size: 17px;
     }
 
     div.message_head{
-        height: 12%;
+        height: 10%;
     }
+
+    
   }
 
 

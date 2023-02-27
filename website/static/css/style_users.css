@@ -191,6 +191,19 @@ div.user_items{
     justify-content: center;
 }
 
+@media (max-width: 600px) {
+
+    .button{
+        width: 15px;
+        height: 15px;
+        font-size: 10px;
+    }
+
+    .edit{
+        width: 25px;
+    }
+  }
+
 @media (max-width: 450px) {
 
     .button{
@@ -203,3 +216,17 @@ div.user_items{
         width: 25px;
     }
   }
+
+  @media (max-width: 400px) {
+
+    .button{
+        width: 12px;
+        height: 12px;
+        font-size: 6px;
+    }
+
+    .edit{
+        width: 20px;
+    }
+  }
+

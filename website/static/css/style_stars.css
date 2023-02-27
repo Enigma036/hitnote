@@ -29,15 +29,35 @@
     color: #46545d;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1400px) {
+    .rating label{
+        font-size: 20px;
+    }
+  }
+
+  
+  @media (max-width: 1200px) {
     .rating label{
         font-size: 17px;
     }
   }
 
+  @media (max-width: 1100px) {
+    .rating label{
+        font-size: 14px;
+    }
+  }
+
+  
+  @media (max-width: 990px) {
+    .rating label{
+        font-size: 12px;
+    }
+  }
+
   @media (max-width: 850px) {
     .rating label{
-        font-size: 30px;
+        font-size: 27px;
     }
   }
 
@@ -47,8 +67,20 @@
     }
   }
 
+  @media (max-width: 600px) {
+    .rating label{
+        font-size: 20px;
+    }
+  }
+
   @media (max-width: 450px) {
     .rating label{
         font-size: 20px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .rating label{
+        font-size: 15px;
     }
   }

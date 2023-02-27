@@ -71,7 +71,8 @@ input.button_add_user:hover{
   color: #1DA1F2;
 }
 
-@media (max-width: 1100px) {
+
+@media (max-width: 1350px) {
   input.date{
     font-size: 15px;
   }
@@ -85,17 +86,45 @@ input.button_add_user:hover{
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1100px) {
   input.date{
-    font-size: 25px;
+    font-size: 13px;
   }
 
   input.interval{
-    font-size: 25px;
+    font-size: 13px;
   }
 
   select.languages{
-    font-size: 25px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 990px) {
+  input.date{
+    font-size: 11px;
+  }
+
+  input.interval{
+    font-size: 11px;
+  }
+
+  select.languages{
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 850px) {
+  input.date{
+    font-size: 20px;
+  }
+
+  input.interval{
+    font-size: 20px;
+  }
+
+  select.languages{
+    font-size: 20px;
   }
 }
 
@@ -113,21 +142,37 @@ input.button_add_user:hover{
   }
 }
 
+
+@media (max-width: 650px) {
+  input.date{
+    font-size: 17px;
+  }
+
+  input.interval{
+    font-size: 17px;
+  }
+
+  select.languages{
+    font-size: 17px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  input.date{
+    font-size: 14px;
+  }
+
+  input.interval{
+    font-size: 14px;
+  }
+
+  select.languages{
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 550px) {
-  input.date{
-    font-size: 15px;
-  }
-
-  input.interval{
-    font-size: 15px;
-  }
-
-  select.languages{
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 450px) {
 
   input.date{
     font-size: 12px;
@@ -141,9 +186,40 @@ input.button_add_user:hover{
     font-size: 12px;
   }
 }
+
+@media (max-width: 550px) {
+
+  input.date{
+    font-size: 10px;
+  }
+
+  input.interval{
+    font-size: 10px;
+  }
+
+  select.languages{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  input.date{
+    font-size: 8px;
+  }
+
+  input.interval{
+    font-size: 8px;
+  }
+
+  select.languages{
+    font-size: 8px;
+  }
+}
+
 
 @media (max-width: 370px) {
   input.date{
-    font-size: 10px;
+    font-size: 7px;
   }
 }
