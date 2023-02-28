@@ -316,6 +316,11 @@ select.font_size{
 
       }
 
+      button.new_mess{
+        font-size: 15px;
+        padding: 0px 15px;
+    }
+
 
 
 
