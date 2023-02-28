@@ -32,3 +32,37 @@ section.messages2{
     width: 70%;
     float: right;
 }
+
+@media screen and (max-width: 1300px){
+    section.messages2{
+        width: 55%;
+    }
+
+    section.user{
+        width: 45%;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+    section.messages2{
+        width: 45%;
+    }
+
+    section.user{
+        width: 55%;
+    }
+
+}
+
+@media screen and (max-width: 650px){
+    section.messages2{
+        width: 40%;
+    }
+
+    section.user{
+        width: 60%;
+    }
+
+}
+

@@ -191,7 +191,50 @@ div.user_items{
     justify-content: center;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 1400px){
+    div.user_head th{
+        font-size: 15px;
+    }
+
+    div.user_head{
+        height: 5%;
+        align-items: center;
+    }
+
+    div.user_info_forever span{
+        font-size: 13px;
+    }
+
+    div.user_info span{
+        font-size: 13px;
+    }
+
+    .button{
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .edit{
+        width: 30px;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    button.modern_button{
+        font-size: 20px;
+    }
+
+    div.user_info_forever span{
+        font-size: 11px;
+    }
+
+    div.user_info span{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 800px) {
 
     .button{
         width: 15px;
@@ -204,29 +247,79 @@ div.user_items{
     }
   }
 
-@media (max-width: 450px) {
+  @media (max-width: 650px) {
 
-    .button{
-        width: 15px;
-        height: 15px;
-        font-size: 10px;
+    button.modern_button{
+        font-size: 18px;
     }
 
-    .edit{
-        width: 25px;
+    div.user_info_forever span{
+        font-size: 9px;
     }
-  }
 
-  @media (max-width: 400px) {
+    div.user_info span{
+        font-size: 9px;
+    }
 
     .button{
-        width: 12px;
-        height: 12px;
-        font-size: 6px;
+        width: 13px;
+        height: 13px;
+        font-size: 8px;
     }
 
     .edit{
         width: 20px;
     }
   }
+  
+  @media (max-width: 500px) {
+
+    button.modern_button{
+        font-size: 15px;
+    }
+
+    div.user_info_forever span{
+        font-size: 7px;
+    }
+
+    div.user_info span{
+        font-size: 7px;
+    }
+
+    .button{
+        width: 12px;
+        height: 12px;
+        font-size: 7px;
+    }
+
+    .edit{
+        width: 20px;
+    }
+
+  }
+
+
+  @media (max-width: 400px) {
+    div.user_head th{
+        font-size: 12px;
+    }
+
+    div.user_info span{
+        font-size: 6px;
+    }
+
+    div.user_info_forever span{
+        font-size: 6px;
+    }
+
+    .button{
+        width: 11px;
+        height: 11px;
+        font-size: 6px;
+    }
+
+    .edit{
+        width: 18px;
+    }
+}
 
