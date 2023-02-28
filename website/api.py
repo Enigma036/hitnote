@@ -25,8 +25,8 @@ def record(user_id, record_id):
                 
                 new_id = (data["id"])
                 new_date = datetime.strptime(data["date"], '%Y-%m-%d').date()
-                new_interval = int(data["time-spent"])
-                new_language = data["programming-language"]
+                new_interval = int(data["time_spent"])
+                new_language = data["programming_language"]
                 new_stars = data["rating"]
                 new_data = data["description"]
                 
@@ -50,7 +50,7 @@ def record(user_id, record_id):
                     note.stars = new_stars
                     note.data = new_data
                     db.session.commit()
-                    json_soubor = {'id': str(new_id), 'date': str(new_date),'time-spent': str(new_interval), 'programming-language': new_language, 'rating': new_stars, 'description': new_data}
+                    json_soubor = {'id': str(new_id), 'date': str(new_date),'time_spent': str(new_interval), 'programming_language': new_language, 'rating': new_stars, 'description': new_data}
                     return jsonify(json_soubor), 200
         if False:
                 abort(404)
@@ -72,7 +72,7 @@ def record(user_id, record_id):
     if request.method == "GET":
         note = Note.query.filter_by(id=record_id, user_id=user_id).first()
         if note:
-            json_soubor = {'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time-spent': str(note.interval), 'programming-language': note.language, 'rating': note.stars, 'description': note.data}
+            json_soubor = {'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time_spent': str(note.interval), 'programming_language': note.language, 'rating': note.stars, 'description': note.data}
             return jsonify(json_soubor), 200
         else:
             abort(404)
@@ -85,7 +85,7 @@ def records(user_id):
         try:
             if notes:
                 for note in notes:
-                    json_soubor.append({'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time-spent': str(note.interval), 'programming-language': note.language, 'rating': note.stars, 'description': note.data})
+                    json_soubor.append({'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time_spent': str(note.interval), 'programming_language': note.language, 'rating': note.stars, 'description': note.data})
                 return jsonify(json_soubor), 200
             else:
                 abort(404)
@@ -99,8 +99,8 @@ def records(user_id):
                 data = request.get_json()
                 
                 new_date = datetime.strptime(data["date"], '%Y-%m-%d').date()
-                new_interval = int(data["time-spent"])
-                new_language = data["programming-language"]
+                new_interval = int(data["time_spent"])
+                new_language = data["programming_language"]
                 new_stars = data["rating"]
                 new_data = data["description"]
                   
@@ -118,7 +118,7 @@ def records(user_id):
                     user = Note(id=str(uuid.uuid4()), date=new_date, interval = new_interval, language = new_language, stars = new_stars, data = new_data, user_id = int(user_id))
                     db.session.add(user)
                     db.session.commit()
-                    json_soubor = {'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time-spent': str(note.interval), 'programming-language': note.language, 'rating': note.stars, 'description': note.data}
+                    json_soubor = {'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time_spent': str(note.interval), 'programming_language': note.language, 'rating': note.stars, 'description': note.data}
                     return jsonify(json_soubor), 201
             
             except:
