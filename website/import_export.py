@@ -55,7 +55,7 @@ def page():
 
                 with open(input.filename, 'r', newline="", encoding="utf-8-sig") as csv_file:
                     reader = csv.reader(csv_file, delimiter=';')
-
+                    header = next(csv_file)
                     for row in reader:
                         try:
                             ajdy = row[0]
@@ -68,7 +68,7 @@ def page():
                             hodnoceni = row[4]
                             text = row[5]
                             
-                            text = text.replace("\\r\\n", "\n").replace("\\n","\n")
+                            text = text.replace("\\r", "\r").replace("\\n","\n")
 
                             try:
                                 datetime(year=int(datum.year),month=int(datum.month),day=int(datum.day))
@@ -152,6 +152,11 @@ def page():
                 
                 with open(output_file, 'w', newline='', encoding='utf-8-sig') as csv_file:
                     writer = csv.writer(csv_file, delimiter=';')
+                    for row in rows:
+                        header = list(row)
+                        header[0], header[1], header[2], header[3], header[4], header[5], header[6] = "id", "date", "time-spent", "programming-language", "rating", "description", ""
+                        writer.writerow(header)
+                        break
                     for row in rows:
                         row_list = list(row)
                         if row_list[5] == current_user.id:
