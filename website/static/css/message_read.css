@@ -106,3 +106,162 @@ div.username textarea{
 .right{
     margin-left: auto;
 }
+@media screen and (max-width: 1440px){
+    input.text{
+
+        border: 2px solid;
+        width: 300px;
+
+        border-radius: 13px;
+
+        font-size: 30px;
+
+      }
+    div.add_input span{
+        font-size: 20px;
+        margin: 5px;
+
+
+    }
+    input.date {
+        border-radius: 10px;
+        font-size: 20px;
+
+      }
+
+    input.interval {
+
+        border: 2px solid;
+
+        border-radius: 10px;
+        font-size: 25px;
+
+    }
+
+    select.languages {
+
+      border: 2px solid;
+
+      border-radius: 10px;
+
+      font-size: 25px;
+
+      text-align: center;
+
+    }
+
+    input.text{
+        font-size: 20px;
+
+      }
+
+      input.button_add_user{
+        font-size: 25px;
+        margin-top: 50px;
+
+      }
+
+}
+@media screen and (max-width: 1050px){
+    
+    input.text{
+        width: 165px;
+        border-radius: 15px;
+        font-size: 30px;
+
+      }
+
+
+
+    input.date {
+        border-radius: 10px;
+        font-size: 15px;
+
+      }
+
+    input.interval {
+
+        border: 2px solid;
+
+        border-radius: 10px;
+        font-size: 20px;
+
+    }
+
+    
+
+    input.text{
+        font-size: 20px;
+
+      }
+
+      input.button_add_user{
+        font-size: 23px;
+        margin-top: 50px;
+
+      }
+
+
+    
+    div.add_input span{
+        font-size: 15px;
+        margin: 5px;
+
+
+    }
+
+    h1.main_title{
+        font-size: 50px;
+        
+        padding-top: 30px;
+        
+    }
+    
+}
+@media screen and (max-width: 800px){
+    
+    div.add_input span{
+        font-size: 15px;
+        margin: 5px;
+    
+    
+    }
+    select.languages {
+
+        border: 2px solid;
+  
+        border-radius: 10px;
+  
+        font-size: 20px;
+  
+        text-align: center;
+  
+      }
+    h1.main_title{
+        font-size: 40px;
+            
+        padding-top: 30px;
+            
+        }
+    
+    div.message_read_info{
+        display: block;
+    
+    }
+    .above_message{
+        width: 100%;
+    
+    }
+    input.button_add_user{
+        font-size: 23px;
+        margin-top: 25px;
+
+      }
+
+
+
+
+
+
+
+}
