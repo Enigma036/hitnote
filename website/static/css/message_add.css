@@ -307,7 +307,7 @@ select.font_size{
     
     }
     .above_message{
-        width: 100%;
+        width: 80%;
     
     }
     input.button_add_user{
@@ -318,13 +318,12 @@ select.font_size{
 
       button.new_mess{
         font-size: 15px;
-        padding: 0px 15px;
+        padding: 3px 15px;
     }
 
-
-
-
-
-
-
+    div.add_input textarea{
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+    }
 }
