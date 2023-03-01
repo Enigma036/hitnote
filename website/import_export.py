@@ -154,7 +154,7 @@ def page():
                     writer = csv.writer(csv_file, delimiter=';')
                     for row in rows:
                         header = list(row)
-                        header[0], header[1], header[2], header[3], header[4], header[5], header[6] = "id", "date", "time-spent", "programming-language", "rating", "description", ""
+                        header[0], header[1], header[2], header[3], header[4], header[5], header[6] = "id", "date", "time_spent", "programming_language", "rating", "description", ""
                         writer.writerow(header)
                         break
                     for row in rows:
