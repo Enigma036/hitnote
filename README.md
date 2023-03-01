@@ -5,6 +5,6 @@ Aplikaci vytvořili **Tomáš Hanák**, **Šimon Halas** a **Adam Hladík**
 ## Požadavky: 
 Ke spuštění budete potřebovat **Python** s moduly **Flask**, **SQLAlchemy** a **Flask-Login**.
 ## Upozornění:
-Defaultní jméno uživatele je: **admin** a heslo je: **123456**
+Defaultní jméno uživatele je: **admin** a heslo je: **123456**.
 Aplikace je testována pouze pro počítače, respektivě je testována na rozlišení 1920x1080.
 Aplikace je testována pouze na prohlížeče s jádrem **Chromium** (Google Chrome, Microsoft Edge ...)
