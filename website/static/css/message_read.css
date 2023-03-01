@@ -1,39 +1,281 @@
 div.main_window{
     height: 100%;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 h1.main_title{
-    font-size: 60px;
+    font-size: 65px;
     color: #1DA1F2;
-    padding-top: 30px;
     text-align: center;
 }
 
 div.message_read_info{
     margin-top: 20px;
-    text-align: left;
+    display: flex;
 }
 
 div.message_read_info span{
-    font-size: 20px;
-    margin: 20px;
-    color: #1DA1F2;
+    font-size: 25px;
 }
 
 div.message_read_info i{
     color: white;
 }
 
-div.message_read_info p{
-    width: 450px;
-    max-width: 450px;
-    height: 150px;
-    max-height: 150px;
+p{
+    font-size: 30px;
     text-align: justify;
-    margin: 20px;
+    margin: 5px;
     color: white;
     word-wrap: break-word;
     white-space: wrap;
     text-overflow: ellipsis;
+}
+
+.nowrap{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div.username{
+    background-color: #14171A;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #1DA1F2;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+
+.above_message{
+    width: 25%;
+}
+
+.for_note{
+    width: 100%;
+    height: 375px;
+}
+
+button.new_mess{
+    cursor: pointer;
+    background-color: #1DA1F2;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #14171A;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 50px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 15px;
+    transition-duration: 0.4s;
+}
+
+button.new_mess:hover{
+    cursor: pointer;
+    background: #14171A;
+    color: #1DA1F2;
+}
+
+div.username textarea{
+    border: 0;
+    resize: none;
+    width: 100%;
+    height: 250px;
+    border-color: #1DA1F2;
+    background-color: #14171A;
+    font-size: 25px;
+    color: #1DA1F2;
+    font-size: 30px;
+    text-align: justify;
+    margin: 5px;
+    color: white;
+    word-wrap: break-word;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}
+
+.right{
+    margin-left: auto;
+}
+@media screen and (max-width: 1440px){
+    input.text{
+
+        border: 2px solid;
+        width: 300px;
+
+        border-radius: 13px;
+
+        font-size: 30px;
+
+      }
+    div.add_input span{
+        font-size: 20px;
+        margin: 5px;
+
+
+    }
+    input.date {
+        border-radius: 10px;
+        font-size: 20px;
+
+      }
+
+    input.interval {
+
+        border: 2px solid;
+
+        border-radius: 10px;
+        font-size: 25px;
+
+    }
+
+    select.languages {
+
+      border: 2px solid;
+
+      border-radius: 10px;
+
+      font-size: 25px;
+
+      text-align: center;
+
+    }
+
+    input.text{
+        font-size: 20px;
+
+      }
+
+      input.button_add_user{
+        font-size: 25px;
+        margin-top: 50px;
+
+      }
+
+}
+@media screen and (max-width: 1050px){
+    
+    input.text{
+        width: 165px;
+        border-radius: 15px;
+        font-size: 30px;
+
+      }
+
+
+
+    input.date {
+        border-radius: 10px;
+        font-size: 15px;
+
+      }
+
+    input.interval {
+
+        border: 2px solid;
+
+        border-radius: 10px;
+        font-size: 20px;
+
+    }
+
+    
+
+    input.text{
+        font-size: 20px;
+
+      }
+
+      input.button_add_user{
+        font-size: 23px;
+        margin-top: 50px;
+
+      }
+
+
+    
+    div.add_input span{
+        font-size: 15px;
+        margin: 5px;
+
+
+    }
+
+    h1.main_title{
+        font-size: 50px;
+        
+        padding-top: 30px;
+        
+    }
+    
+}
+@media screen and (max-width: 800px){
+    
+    div.add_input span{
+        font-size: 15px;
+        margin: 5px;
+    
+    
+    }
+    select.languages {
+
+        border: 2px solid;
+  
+        border-radius: 10px;
+  
+        font-size: 20px;
+  
+        text-align: center;
+  
+      }
+    h1.main_title{
+        font-size: 40px;
+            
+        padding-top: 30px;
+            
+        }
+    
+    div.message_read_info{
+        display: inline;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    .above_message{
+        width: 80%;
+    
+    }
+    input.button_add_user{
+        font-size: 23px;
+        margin-top: 25px;
+
+      }
+      div.message_read_info{
+        margin-left: auto;
+        margin-right: 40px;
+    }
+
+    
+    button.new_mess{
+        font-size: 15px;
+        padding: 0px 25px;
+    }
+
+    div.username{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .for_note{
+        width: 85%;
+    }
 }

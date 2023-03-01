@@ -3,7 +3,7 @@ function deleteNote(noteId, userId) {
       method: "POST",
       body: JSON.stringify({ noteId: noteId }),
     }).then((_res) => {
-      window.location.href = `/${userId}`; 
+      window.location.href = `/`; 
     });
   }
 
@@ -12,6 +12,6 @@ function deleteProgrammer(userId) {
       method: "POST",
       body: JSON.stringify({ userId: userId }),
     }).then((_res) => {
-      window.location.href = "/"; 
+      window.location.href = "/pridejprogramatora"; 
     });
   }

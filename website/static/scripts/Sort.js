@@ -24,7 +24,7 @@ function sortLoad(userId){
     } 
     else {
         dateTH.innerHTML = `<input type="hidden" name="dateTH" value="&#8597;"> <span>&#8597;</span>`;
-        document.cookie = `dateTH=&#8597;; path=/${userId}`;
+        document.cookie = `dateTH=&#8597;;`;
     }
 
     if (date_value) {
@@ -32,7 +32,7 @@ function sortLoad(userId){
     } 
     else {
         languageTH.innerHTML = `<input type="hidden" name="languageTH" value="&#8597;"> <span>&#8597;</span>`;
-        document.cookie = `languageTH=&#8597;; path=/${userId}`;
+        document.cookie = `languageTH=&#8597;;`;
     }
 
     if (interval_value) {
@@ -40,7 +40,7 @@ function sortLoad(userId){
     } 
     else {
         intervalTH.innerHTML = `<input type="hidden" name="intervalTH" value="&#8597;"> <span>&#8597;</span>`;
-        document.cookie = `intervalTH=&#8597;; path=/${userId}`;
+        document.cookie = `intervalTH=&#8597;;`;
     }
 
     if (stars_value) {
@@ -48,7 +48,7 @@ function sortLoad(userId){
     } 
     else {
         starsTH.innerHTML = `<input type="hidden" name="starsTH" value="&#8597;"> <span>&#8597;</span>`;
-        document.cookie = `starsTH=&#8597;; path=/${userId}`;
+        document.cookie = `starsTH=&#8597;;`;
     }
 
 }
@@ -62,17 +62,17 @@ function sortOnChange(id,userId){
     if(value=="&#8597;" || value=="&#8597"){
         value = "&#8595;"
         element.innerHTML = `<input type="hidden" name="${id}" value="${value}"> <span>${value}</span>`;
-        document.cookie = `${id}=${value}; path=/${userId}`;
+        document.cookie = `${id}=${value};`;
     }
     else if(value=="&#8595;" || value=="&#8595"){
         value = "&#8593;"
         element.innerHTML = `<input type="hidden" name="${id}" value="${value}"> <span>${value}</span>`;
-        document.cookie = `${id}=${value}; path=/${userId}`;
+        document.cookie = `${id}=${value};`;
     }
     else{
         value = "&#8597;"
         element.innerHTML = `<input type="hidden" name="${id}" value="${value}"> <span>${value}</span>`;
-        document.cookie = `${id}=${value}; path=/${userId}`;
+        document.cookie = `${id}=${value};`;
     }
 }
 
@@ -90,10 +90,10 @@ function getOrder(userId){
         document.getElementById("IdOrderStars").innerHTML = `<input type="hidden" name="starsOrder" value="${starsOrder}">`
     }
     else{
-        document.cookie = `dateOrder=1; path=/${userId}`;
-        document.cookie = `languagesOrder=2; path=/${userId}`;
-        document.cookie = `intervalOrder=3; path=/${userId}`;
-        document.cookie = `starsOrder=4; path=/${userId}`;
+        document.cookie = `dateOrder=1;`;
+        document.cookie = `languagesOrder=2;`;
+        document.cookie = `intervalOrder=3;`;
+        document.cookie = `starsOrder=4;`;
     }
 }
 
@@ -158,10 +158,10 @@ function changeOrder(id, userId){
         orderArray[index] = 1;
     }
     
-    document.cookie = `dateOrder=${orderArray[0]}; path=/${userId}`;
-    document.cookie = `languagesOrder=${orderArray[1]}; path=/${userId}`;
-    document.cookie = `intervalOrder=${orderArray[2]}; path=/${userId}`;
-    document.cookie = `starsOrder=${orderArray[3]}; path=/${userId}`;
+    document.cookie = `dateOrder=${orderArray[0]};`;
+    document.cookie = `languagesOrder=${orderArray[1]};`;
+    document.cookie = `intervalOrder=${orderArray[2]};`;
+    document.cookie = `starsOrder=${orderArray[3]};`;
 
     document.getElementById("IdOrderDate").innerHTML = `<input type="hidden" name="dateOrder" value="${orderArray[0]}">`
     document.getElementById("IdOrderLanguage").innerHTML = `<input type="hidden" name="languagesOrder" value="${orderArray[1]}">`

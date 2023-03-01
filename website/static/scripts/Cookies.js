@@ -29,7 +29,7 @@ function loadCookiesForCheckboxes(userId){
 
     if (date1 === undefined) {
         CheckDate.checked = false;
-        document.cookie = `CheckDate=false; path=/${userId}`;
+        document.cookie = `CheckDate=false;`;
     } 
     else {
         CheckDate.checked = (date1 === "true");
@@ -37,7 +37,7 @@ function loadCookiesForCheckboxes(userId){
 
     if (interval1 === undefined) {
         CheckInterval.checked = false;
-        document.cookie = `CheckInterval=false; path=/${userId}`;
+        document.cookie = `CheckInterval=false;`;
     } 
     else {
         CheckInterval.checked = (interval1 === "true");
@@ -45,7 +45,7 @@ function loadCookiesForCheckboxes(userId){
 
     if (language1 === undefined) {
         CheckLanguages.checked = false;
-        document.cookie = `CheckLanguages=false; path=/${userId}`;
+        document.cookie = `CheckLanguages=false;`;
     } 
     else {
         CheckLanguages.checked = (language1 === "true");
@@ -53,7 +53,7 @@ function loadCookiesForCheckboxes(userId){
 
     if (stars1 === undefined) {
         CheckStars.checked = false;
-        document.cookie = `CheckStars=false; path=/${userId}`;
+        document.cookie = `CheckStars=false;`;
     } 
     else {
         CheckStars.checked = (stars1 === "true");
@@ -92,7 +92,7 @@ function loadCookies(userId){
     } 
     else {
         FiltrationDate1.value = "2022-01-01";
-        document.cookie = `FiltrationDate1=2022-01-01; path=/${userId}`;
+        document.cookie = `FiltrationDate1=2022-01-01;`;
     }
 
     if (date2) {
@@ -100,7 +100,7 @@ function loadCookies(userId){
     } 
     else {
         FiltrationDate2.value = "2023-01-01";
-        document.cookie = `FiltrationDate2=2023-01-01; path=/${userId}`;
+        document.cookie = `FiltrationDate2=2023-01-01;`;
     }
     // Konec Datumu
 
@@ -110,7 +110,7 @@ function loadCookies(userId){
     } 
     else {
         FiltrationInterval1.value = 1;
-        document.cookie = `FiltrationInterval1=1; path=/${userId}`;
+        document.cookie = `FiltrationInterval1=1;`;
     }
 
     if (interval2) {
@@ -118,7 +118,7 @@ function loadCookies(userId){
     } 
     else {
         FiltrationInterval2.value = 1440;
-        document.cookie = `FiltrationInterval2=1440; path=/${userId}`;
+        document.cookie = `FiltrationInterval2=1440;`;
     }
     // Konec Intervalu
 
@@ -133,15 +133,15 @@ function loadCookies(userId){
     } 
     else {
         options[0].selected = true;
-        document.cookie = `FiltrationLanguages1=${options[0].value}; path=/${userId}`;
+        document.cookie = `FiltrationLanguages1=${options[0].value};`;
     }
     // Konec Jazyka
 
 
     // Začátek Hodnocení - Není to úplně cookies
     if (stars1 === null){
-        document.getElementById("FiltrationRadio5a").checked = true;
-        document.cookie = `FiltrationStarsA=5; path=/${userId}`;
+        document.getElementById("FiltrationRadio6a").checked = true;
+        document.cookie = `FiltrationStarsA=6;`;
     }
     else{
         document.getElementById(`FiltrationRadio${checkCookie("FiltrationStarsA")}a`).checked = true;
@@ -149,7 +149,7 @@ function loadCookies(userId){
 
     if (stars2 === null){
         document.getElementById("FiltrationRadio1b").checked = true;
-        document.cookie = `FiltrationStarsB=1; path=/${userId}`;
+        document.cookie = `FiltrationStarsB=1;`;
     }
     else{
         document.getElementById(`FiltrationRadio${checkCookie("FiltrationStarsB")}b`).checked = true;
@@ -159,22 +159,22 @@ function loadCookies(userId){
 
 function changeCookies(elementID, userId){
     let original_value = document.getElementById(`${elementID}`).value;
-    document.cookie = `${elementID}=${original_value}; path=/${userId}`;
+    document.cookie = `${elementID}=${original_value};`;
 }
 
 function changeCookiesForCheckBoxes(elementID, userId){
     let original_value = document.getElementById(`${elementID}`).checked;
-    document.cookie = `${elementID}=${original_value}; path=/${userId}`;
+    document.cookie = `${elementID}=${original_value};`;
 }
 
 function changeCookiesForCheckBoxesA(elementID, userId){
     document.getElementById(`FiltrationRadio${elementID}a`).checked = true;
-    document.cookie = `FiltrationStarsA=${elementID}; path=/${userId}`;
+    document.cookie = `FiltrationStarsA=${elementID};`;
 }
 
 function changeCookiesForCheckBoxesB(elementID, userId){
     document.getElementById(`FiltrationRadio${elementID}b`).checked = true;
-    document.cookie = `FiltrationStarsB=${elementID}; path=/${userId}`;
+    document.cookie = `FiltrationStarsB=${elementID};`;
 }
 
 function changeCookiesForSelect(userId){
@@ -186,5 +186,16 @@ function changeCookiesForSelect(userId){
             selected_value = options[i].value;
         }
     }
-    document.cookie = `FiltrationLanguages1=${selected_value}; path=/${userId}`;
+    document.cookie = `FiltrationLanguages1=${selected_value};`;
+}
+
+function deleteAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }

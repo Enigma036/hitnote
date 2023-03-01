@@ -3,7 +3,7 @@ Hitnote je úžasná webová aplikace, která je vytvořena, jako součást sout
 ## Tvůrci:
 Aplikaci vytvořili **Tomáš Hanák**, **Šimon Halas** a **Adam Hladík**
 ## Požadavky: 
-Ke spuštění budete potřebovat **Python** s moduly **Flask** a **SQLAlchemy**.
+Ke spuštění budete potřebovat **Python** s moduly **Flask**, **SQLAlchemy** a **Flask-Login**.
 ## Upozornění:
 Aplikace je testována pouze pro počítače, respektivě je testována na rozlišení 1920x1080.
 Aplikace je testována pouze na prohlížeče s jádrem **Chromium** (Google Chrome, Microsoft Edge ...)

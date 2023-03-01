@@ -1,18 +1,18 @@
-from flask import Blueprint, render_template, request, redirect, jsonify,url_for
+from flask import Blueprint, render_template, request, redirect, jsonify, url_for
 import datetime
+from flask_login import login_required, current_user
 from .models import User, Note
 from . import db
 import json
+import uuid
 
 messages = Blueprint("messages", __name__) 
+    
 @messages.route("/pridejzpravu", methods=["GET","POST"])
-def original_add():
-    return redirect(url_for("messages.add", cislo=1))
+@login_required
+def add():
     
-@messages.route("/pridejzpravu/<cislo>", methods=["GET","POST"])
-def add(cislo):
-    
-    original_programmer = User.query.filter_by(id=cislo).first_or_404() # Původní programátor
+    original_programmer = current_user # Původní programátor
 
     er_succ_message = "Zpráva"
     trida = "none"
@@ -24,7 +24,10 @@ def add(cislo):
         cas = request.form.get("AddInterval1")
         hodnoceni = request.form.get("AddStar1")
         programator = request.form.get("AddProgrammer1")
-        text = request.form.get("AddText1")
+        text = request.form.get("AddText1").strip()
+        
+        if not hodnoceni:
+            hodnoceni = 0
         
         
         # ZAČÁTEK TESTOVÁNÍ VSTUPŮ
@@ -40,15 +43,15 @@ def add(cislo):
             er_succ_message = "Špatně zadané datum"
             trida = "error"
             
-        elif jazyk == None or jazyk.isspace() or len(jazyk) < 1 or len(jazyk) > 20:
+        elif jazyk == None or jazyk.isspace() or len(jazyk) < 1 or len(jazyk) > 30:
              er_succ_message = "Špatně zadaný programovací jazyk!"
              trida = "error"
 
-        elif hodnoceni == None or cas=="" or int(cas) < 1 or int(cas) > 1440:
+        elif cas == None or cas=="" or int(cas) < 1 or int(cas) > 1440:
             er_succ_message = "Špatně zadaný čas!"
             trida = "error"
             
-        elif hodnoceni == None or hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 1:
+        elif hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 0:
             er_succ_message = "Špatně zadané hodnocení!"
             trida = "error"   
             
@@ -66,15 +69,23 @@ def add(cislo):
             er_succ_message = "Zpráva byla vytvořena"
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
-            jazyk = jazyk.strip()
-            new_note = Note(date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = programator, data = text)
+            new_note = Note(id=str(uuid.uuid4()),date = datum, language = jazyk, interval = cas, stars = hodnoceni, user_id = programator, data = text)
             db.session.add(new_note)
             db.session.commit()
                     
     return render_template("add_message.html", message = er_succ_message, trida=trida, programmers=User.query.all(), original_programmer = original_programmer)
 
 @messages.route("/upravzpravu/<cislo>", methods=["GET","POST"])
+@login_required
 def edit(cislo):
+    
+    # Kontrola, zda nemůže uživatel načíst zprůvu jiného uživatele
+    programmer_notes = Note.query.filter_by(user_id=current_user.id).all()
+    seznam = []
+    for note in programmer_notes:
+        seznam.append(note.id)
+    if cislo not in seznam:
+        return redirect(url_for("views.home"))
     
     original_message = Note.query.filter_by(id=cislo).first_or_404()
     original_programmer = User.query.filter_by(id=original_message.user_id).first_or_404()
@@ -89,7 +100,11 @@ def edit(cislo):
         cas = request.form.get("AddInterval1")
         hodnoceni = request.form.get("AddStar1")
         programator = request.form.get("AddProgrammer1")
-        text = request.form.get("AddText1")
+        text = request.form.get("AddText1").strip()
+        
+        
+        if not hodnoceni:
+            hodnoceni = 0
         
         
         # ZAČÁTEK TESTOVÁNÍ VSTUPŮ
@@ -113,7 +128,7 @@ def edit(cislo):
             er_succ_message = "Špatně zadaný čas!"
             trida = "error"
             
-        elif hodnoceni == None or hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 1:
+        elif hodnoceni == "" or int(hodnoceni) > 5 or int(hodnoceni) < 0:
             er_succ_message = "Špatně zadané hodnocení!"
             trida = "error"   
             
@@ -131,7 +146,6 @@ def edit(cislo):
             er_succ_message = "Zpráva byla upravena"
             trida = "success"
             datum = datetime.datetime.strptime(datum, '%Y-%m-%d').date()
-            jazyk = jazyk.strip()
             Note.query.filter_by(id=cislo).first_or_404().date = datum
             Note.query.filter_by(id=cislo).first_or_404().language = jazyk
             Note.query.filter_by(id=cislo).first_or_404().interval = cas
@@ -144,7 +158,16 @@ def edit(cislo):
     return render_template("edit_message.html", message = er_succ_message, trida=trida, programmers=User.query.all(), original_message = original_message, original_programmer = original_programmer)
 
 @messages.route("/prectizpravu/<cislo>", methods=["GET","POST"])
+@login_required
 def read(cislo):
+    
+    # Kontrola, zda nemůže uživatel načíst zprůvu jiného uživatele
+    programmer_notes = Note.query.filter_by(user_id=current_user.id).all()
+    seznam = []
+    for note in programmer_notes:
+        seznam.append(note.id)
+    if cislo not in seznam:
+        return redirect(url_for("views.home"))
     
     original_message = Note.query.filter_by(id=cislo).first_or_404()
     original_programmer = User.query.filter_by(id=original_message.user_id).first_or_404()

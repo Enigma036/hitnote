@@ -4,6 +4,7 @@ input.date {
     border: 2px solid;
     border-color: #1DA1F2;
     border-radius: 5px;
+    font-size: 18px;
     color-scheme: dark;
     cursor: pointer;
 
@@ -13,7 +14,7 @@ input.checkbox {
     accent-color: #1DA1F2;
     color-scheme: dark;
     cursor: pointer;
-
+    font-size: 18px;
   }
 
 input.interval {  
@@ -24,7 +25,7 @@ input.interval {
     border-radius: 5px;
     color-scheme: dark;
     cursor: pointer;
-
+    font-size: 18px;
   }
 
 select.languages {
@@ -34,6 +35,7 @@ select.languages {
   border-color: #1DA1F2;
   border-radius: 5px;
   color-scheme: dark;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -44,6 +46,7 @@ input.text{
   border-color: #1DA1F2;
   border-radius: 5px;
   color-scheme: dark;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -66,4 +69,157 @@ input.button_add_user:hover{
   cursor: pointer;
   background: #14171A;
   color: #1DA1F2;
+}
+
+
+@media (max-width: 1350px) {
+  input.date{
+    font-size: 15px;
+  }
+
+  input.interval{
+    font-size: 15px;
+  }
+
+  select.languages{
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1100px) {
+  input.date{
+    font-size: 13px;
+  }
+
+  input.interval{
+    font-size: 13px;
+  }
+
+  select.languages{
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 990px) {
+  input.date{
+    font-size: 11px;
+  }
+
+  input.interval{
+    font-size: 11px;
+  }
+
+  select.languages{
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 850px) {
+  input.date{
+    font-size: 20px;
+  }
+
+  input.interval{
+    font-size: 20px;
+  }
+
+  select.languages{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  input.date{
+    font-size: 20px;
+  }
+
+  input.interval{
+    font-size: 20px;
+  }
+
+  select.languages{
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 650px) {
+  input.date{
+    font-size: 17px;
+  }
+
+  input.interval{
+    font-size: 17px;
+  }
+
+  select.languages{
+    font-size: 17px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  input.date{
+    font-size: 14px;
+  }
+
+  input.interval{
+    font-size: 14px;
+  }
+
+  select.languages{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 550px) {
+
+  input.date{
+    font-size: 12px;
+  }
+
+  input.interval{
+    font-size: 12px;
+  }
+
+  select.languages{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 550px) {
+
+  input.date{
+    font-size: 10px;
+  }
+
+  input.interval{
+    font-size: 10px;
+  }
+
+  select.languages{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  input.date{
+    font-size: 8px;
+  }
+
+  input.interval{
+    font-size: 8px;
+  }
+
+  select.languages{
+    font-size: 8px;
+  }
+}
+
+
+@media (max-width: 370px) {
+  input.date{
+    font-size: 7px;
+  }
 }

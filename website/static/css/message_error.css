@@ -15,3 +15,9 @@ div.error_messages{
 .none{
     visibility: hidden;
 }
+
+@media (max-width: 600px) {
+    div.error_messages{
+        font-size: 13px;
+    }
+}

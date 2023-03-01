@@ -5,8 +5,8 @@
 }
 
 html{
-    height: 100%;
-    overflow: hidden;
+    height: 97%;
+    overflow-y: auto;
 }
 
 body{
@@ -24,9 +24,45 @@ section.user{
 
 section.messages{
     height: 100%;
-    width: 65%;
+    width: 100%;
+}
+
+section.messages2{
+    height: 100%;
+    width: 70%;
     float: right;
 }
 
+@media screen and (max-width: 1300px){
+    section.messages2{
+        width: 55%;
+    }
 
+    section.user{
+        width: 45%;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+    section.messages2{
+        width: 45%;
+    }
+
+    section.user{
+        width: 55%;
+    }
+
+}
+
+@media screen and (max-width: 650px){
+    section.messages2{
+        width: 40%;
+    }
+
+    section.user{
+        width: 60%;
+    }
+
+}
 
