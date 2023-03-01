@@ -20,7 +20,7 @@ def record(user_id, record_id):
     if request.method == "PUT":
         note = Note.query.filter_by(id=record_id, user_id=user_id).first()
         if note:
-            if True:
+            try:
                 data = request.get_json()
                 
                 new_id = (data["id"])
@@ -52,7 +52,7 @@ def record(user_id, record_id):
                     db.session.commit()
                     json_soubor = {'id': str(new_id), 'date': str(new_date),'time_spent': str(new_interval), 'programming_language': new_language, 'rating': new_stars, 'description': new_data}
                     return jsonify(json_soubor), 200
-        if False:
+            except:
                 abort(404)
         else:
             abort(404)
@@ -94,34 +94,31 @@ def records(user_id):
             
     if request.method == "POST":
         note = Note.query.filter_by(user_id=user_id).first()
-        if note:
-            try:
-                data = request.get_json()
-                
-                new_date = datetime.strptime(data["date"], '%Y-%m-%d').date()
-                new_interval = int(data["time_spent"])
-                new_language = data["programming_language"]
-                new_stars = data["rating"]
-                new_data = data["description"]
-                  
-                if new_date == None:
-                    abort(404)
-                elif new_interval == None or  new_interval=="" or int(new_interval) < 1 or int(new_interval) > 1440:
-                    abort(404)
-                elif new_language == None or new_language.isspace() or len(new_language) < 1 or len(new_language) > 30:
-                    abort(404)
-                elif new_stars == None or new_stars == "" or int(new_stars) > 5 or int(new_stars) < 0:
-                    abort(404)
-                elif new_data == None or len(new_data) < 1 or len(new_data) > 300 or new_data.isspace():
-                    abort(404)
-                else:
-                    user = Note(id=str(uuid.uuid4()), date=new_date, interval = new_interval, language = new_language, stars = new_stars, data = new_data, user_id = int(user_id))
-                    db.session.add(user)
-                    db.session.commit()
-                    json_soubor = {'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time_spent': str(note.interval), 'programming_language': note.language, 'rating': note.stars, 'description': note.data}
-                    return jsonify(json_soubor), 201
+        try:
+            data = request.get_json()
             
-            except:
+            new_date = datetime.strptime(data["date"], '%Y-%m-%d').date()
+            new_interval = int(data["time_spent"])
+            new_language = data["programming_language"]
+            new_stars = data["rating"]
+            new_data = data["description"]
+                
+            if new_date == None:
                 abort(404)
-        else:
+            elif new_interval == None or  new_interval=="" or int(new_interval) < 1 or int(new_interval) > 1440:
+                abort(404)
+            elif new_language == None or new_language.isspace() or len(new_language) < 1 or len(new_language) > 30:
+                abort(404)
+            elif new_stars == None or new_stars == "" or int(new_stars) > 5 or int(new_stars) < 0:
+                abort(404)
+            elif new_data == None or len(new_data) < 1 or len(new_data) > 300 or new_data.isspace():
+                abort(404)
+            else:
+                user = Note(id=str(uuid.uuid4()), date=new_date, interval = new_interval, language = new_language, stars = new_stars, data = new_data, user_id = int(user_id))
+                db.session.add(user)
+                db.session.commit()
+                json_soubor = {'id': str(note.id), 'date': note.date.strftime("%Y-%m-%d"),'time_spent': str(note.interval), 'programming_language': note.language, 'rating': note.stars, 'description': note.data}
+                return jsonify(json_soubor), 201
+        
+        except:
             abort(404)
