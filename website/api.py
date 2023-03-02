@@ -30,7 +30,7 @@ def record(user_id, record_id):
                 new_stars = data["rating"]
                 new_data = data["description"]
                 
-                if new_id == None or (Note.query.filter_by(id = new_id).first() != Note.query.filter_by(id = new_id, user_id = user_id).first()):
+                if new_id != note.id:
                     abort(404)    
                 elif new_date == None:
                     abort(404)
@@ -43,7 +43,6 @@ def record(user_id, record_id):
                 elif new_data == None or len(new_data) < 1 or len(new_data) > 300 or new_data.isspace():
                     abort(404)
                 else:
-                    note.id = new_id
                     note.date = new_date
                     note.interval = new_interval
                     note.language = new_language
