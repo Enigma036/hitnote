@@ -246,8 +246,7 @@ select.font_size{
 
     }
 
-    
-
+  
     input.text{
         font-size: 20px;
 
@@ -264,15 +263,11 @@ select.font_size{
     div.add_input span{
         font-size: 15px;
         margin: 5px;
-
-
     }
 
     h1.main_title{
         font-size: 50px;
-        
         padding-top: 30px;
-        
     }
     
 }

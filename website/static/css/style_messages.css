@@ -10,12 +10,12 @@ button.log_out{
     border: 3px solid;
     border-color: #a11616;
     color: #14171A;
-    padding: 5px 30px;
+    padding: 10px 30px;
     text-align: center;
     text-decoration: none;
-    font-size: 50px;
+    font-size: 32px;
     margin: 10px;
-    margin-top: 50px;
+    margin-top: 60px;
     border-radius: 15px;
     transition-duration: 0.4s;
 }
@@ -32,12 +32,12 @@ div.username{
     border: 3px solid;
     border-color: #1DA1F2;
     color: #1DA1F2;
-    padding: 5px 30px;
+    padding: 8px 30px;
     text-align: center;
     text-decoration: none;
-    font-size: 50px;
+    font-size: 32px;
     margin: 10px;
-    margin-top: 50px;
+    margin-top: 60px;
     border-radius: 50px;
 }
 
@@ -52,12 +52,12 @@ button.new_mess{
     border: 3px solid;
     border-color: #1DA1F2;
     color: #14171A;
-    padding: 5px 30px;
+    padding: 10px 30px;
     text-align: center;
     text-decoration: none;
-    font-size: 50px;
+    font-size: 32px;
     margin: 10px;
-    margin-top: 50px;
+    margin-top: 60px;
     border-radius: 15px;
     transition-duration: 0.4s;
 }
@@ -218,10 +218,6 @@ div.programming_div{
 @media (max-width: 1100px) {
     div.message_filters_item{
         font-size: 18px;
-    }
-
-    div.username{
-        font-size: 40px;
     }
 
     button.log_out{

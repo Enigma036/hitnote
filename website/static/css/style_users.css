@@ -323,3 +323,20 @@ div.user_items{
     }
 }
 
+
+@media screen and (max-height: 650px){
+    div.user_list{
+        margin-top: 100px;
+    }
+    
+}
+
+
+@media screen and (max-height: 450px){
+    div.user_list{
+        margin-top: 200px;
+    }
+    
+}
+
+
