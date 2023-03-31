@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jihomoravské lignitové doly</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/scrollbar.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}"/>
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">
+</head>
+<body>
+	<div class="app">
+		<div class="menu-toggle">
+			<div class="hamburger">
+				<span></span>
+			</div>
+		</div>
+
+		<aside class="sidebar">
+			<div class="info_sidebar">
+				<img class="logo" src="{{ url_for('static', filename='icon/logo_lignitove_doly.png') }}" alt="Jihomoravské lignitové doly">
+				<h1>Jihomoravské<br>lignitové doly</h1>
+				<form action="{{ url_for('views.search') }}" method="GET">
+					<div class="container_sidebar">
+						<input type="text" name="q" placeholder="Zadej text...">
+						<input type="submit" value="&#x1F50E;&#xFE0E;">
+					</div>
+				</form>
+			</div>
+			<nav class="menu">
+				{% for category in categories %}
+					{% if my_category %}
+						{% if my_category.id == category.id %}
+							<a href='{{ url_for("views.home", cislo = category.id, page=1 )}}' class="menu-item is-active">{{ category.name }}</a>
+						{% else %}
+							<a href='{{ url_for("views.home", cislo = category.id, page=1 )}}' class="menu-item">{{ category.name }}</a>
+						{% endif %}
+					{% else %}
+						<a href='{{ url_for("views.home", cislo = category.id, page=1 )}}' class="menu-item">{{ category.name }}</a>
+					{% endif %}
+				{% endfor %}
+				<a href='{{ url_for("category.home")}}' class="menu-item" style="margin-top: 2em; background-color: #5CC279; color:black; border-radius: 0;">Kategorie</a>
+				<a href='{{ url_for("settings.home")}}' class="menu-item" style="background-color: #5CC279; color:black; border-radius: 0;">Nastavení</a>
+			</nav>
+		</aside>
+		
+
+		<main class="content">
+			<div class="main_title">
+				<h1>{{my_category.name}}</h1>
+			</div>
+			{% if my_user.is_authenticated %}
+				<div class="end_buttons">
+					<button class="new_input" type="button" onclick=window.location.href='{{ url_for("article.add", cislo =  my_category.id) }}';>+ Přidej článek</button>
+				</div>
+			{% endif %}
+			<div class="main_content">
+				{% if articles %}
+					{% for article in articles %}
+						{% if my_user.is_authenticated or article.public == 1 %}
+							<div class="article" onclick=window.location.href='{{ url_for("article.home", cislo =  article.id) }}';>
+								<div class="image_container">
+									{% if article.background_image %}
+										<img src="{{article.background_image}}" alt="Pozadí k článku o hornících">
+									{% else %}
+										<img src="{{ url_for('static', filename='img/NoBackground.png') }}" alt="Pozadí k článku o hornících">
+									{% endif %}
+									<div class="oznameni">Nepřečteno</div>
+									{% if my_user.is_authenticated and article.public == 0 %}
+										<div class="viditelnost">Neveřejné</div>
+									{% endif %}
+								</div>
+								<h2>{{article.title}}</h2>
+								<div class="about_article">
+									<span class="datum">{{article.date.day}}. {{article.date.month}}. {{article.date.year}}</span>
+									<span class="author">{{article.author}}</span>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Aliquam ante. Mauris tincidunt sem sed arcu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Vestibulum erat nulla, ullamcorper  .. </p>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="next_page">
+				{% if page > 1 %}
+					<button type="button" class="button" onclick=window.location.href='{{ url_for("views.home", cislo =  my_category.id, page = page-1) }}';>&#60;</button>
+				{% endif %}
+				<div class="text">Stránka {{ page }}</div>
+				{% if page < last_page %}
+					<button type="button" class="button" onclick=window.location.href='{{ url_for("views.home", cislo =  my_category.id, page = page+1) }}';>&#62;</button>
+				{% endif %}
+			</div>
+		</main>
+	
+	
+	
+	</div>
+	<script>
+
+		const menu_toggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('.sidebar');
+
+
+		menu_toggle.addEventListener('click', () => {
+			menu_toggle.classList.toggle('is-active');
+			sidebar.classList.toggle('is-active');
+		});
+	</script>
+</body>
+</html>
