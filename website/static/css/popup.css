@@ -1,0 +1,96 @@
+.popup{
+    font-size: 40px;
+    display: flex;
+    color: black;
+}
+
+
+.popup .overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+    display: none;
+    cursor: auto;
+}
+
+.popup .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #1DA1F2;
+    width: 320px;
+    height: 200px;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: auto;
+    color: #14171A;
+}
+
+
+.popup.active .overlay{
+    display: block;
+}
+
+.popup.active .content{
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.delete2{
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    margin-top: 15px;
+    font-size: 30px;
+    padding: 5px;
+    margin: 20px;
+    background-color: rgb(193, 29, 29);
+    color: rgb(84, 2, 2);
+    border-color: rgb(84, 2, 2);
+    transition-duration: 0.4s;
+    border: 3px solid;
+    border-color: #1DA1F2;
+}
+
+
+.delete2:hover{
+    border: 3px solid;
+    background-color: rgb(200, 0, 0);
+    color: #14171A;
+    border-color: #14171A;
+}
+
+.close{
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    margin-top: 15px;
+    font-size: 30px;
+    padding: 5px;
+    margin: 20px;
+    background-color: #fff;
+    border: 3px solid;
+    color: #1DA1F2;
+    border-color: #1DA1F2;
+    transition-duration: 0.4s;
+}
+
+.close:hover{
+    background-color: #1DA1F2;
+    border: 3px solid;
+    color: #14171A;
+    border-color: #14171A;
+}

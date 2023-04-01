@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_users.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_messages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_input_types.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_stars.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_label.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_add.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message_error.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/HitNote.png') }}">    
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/ScriptForButtons.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/Delete.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/Checker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/StarsRating.js') }}"></script>
+    <title>Přidej zprávu</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Datum_add_message();
+        });
+    </script>
+</head>
+<body>
+    <!--Budu využívat zřejmě třídy z read_message-->
+    <section class="messages">
+        <div class="main_window">
+            <form method="POST">
+                <div class="message_read_info_date">
+                    <button class="new_mess" type="button" onclick=window.location.href='{{ url_for("views.home") }}';>&#8592</button>
+                    <div class="right">
+                        <div class="add_input">
+                            <span>Vyber datum</span> 
+                            <br>
+                            <input class="date space" type="date" id="AddDate1"  name="AddDate1" value="2023-01-01">
+                        </div>
+                    </div>
+                </div>
+                <h1 class="main_title">
+                    Nová Zpráva
+                </h1>
+                <div class="message_read_info">
+                    <div class="above_message">
+                        <div class="add_input">
+                            <span>Programovací jazyk</span> 
+                            <br>
+                            <input class="text space" type="text" id="AddLanguage1" placeholder="Python" name="AddLanguage1">
+                        </div>
+                    </div>
+
+                    <div class="above_message">
+                        <div class="add_input">
+                            <span>Strávený čas v minutách</span> 
+                            <br>
+                            <input class="interval space" type="number" id="AddInterval1" placeholder="1"  name="AddInterval1" min="0" max="1440">
+                        </div>
+                    </div>
+
+                    <div class="above_message">
+                        <div class="add_input">
+                            <span>Hodnocení</span>
+                            <br>
+                            <div class="rating space">
+                                <input id="AddRadio1" type="radio" name="AddStar1" value="5" class="star" onclick="toggleRadioButton(this);" />
+                                <label for="AddRadio1">&#9733;</label>
+                                <input id="AddRadio2" type="radio" name="AddStar1" value="4" class="star" onclick="toggleRadioButton(this);" />
+                                <label for="AddRadio2">&#9733;</label>
+                                <input id="AddRadio3" type="radio" name="AddStar1" value="3" class="star" onclick="toggleRadioButton(this);" />
+                                <label for="AddRadio3">&#9733;</label>
+                                <input id="AddRadio4" type="radio" name="AddStar1" value="2" class="star" onclick="toggleRadioButton(this);" />
+                                <label for="AddRadio4">&#9733;</label>
+                                <input id="AddRadio5" type="radio" name="AddStar1" value="1" class="star" onclick="toggleRadioButton(this);" />
+                                <label for="AddRadio5">&#9733;</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="above_message">
+                        <div class="add_input">
+                            <span>Programátor</span> 
+                            <br>
+                            <select class="languages space" name="AddProgrammer1" id="AddProgrammer1">
+                                <option value={{original_programmer.id}}>{{original_programmer.jmeno}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="add_input">
+                    <textarea class="new_note" id="AddText1" name="AddText1" maxlength="300" placeholder="Zadejte popisek..."></textarea>
+                </div>
+                <div class="error_messages">
+                    <span class="{{trida}}">{{ message }}</span>
+                </div>
+                <div class="add_input"  style="margin-top: 0;">
+                    <input type="submit" class="button_add_user" style="margin-top: 30px;" value="Vytvořit zprávu"/>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

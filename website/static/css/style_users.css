@@ -1,0 +1,342 @@
+h1.main_title{
+    font-size: 60px;
+    color: #1DA1F2;
+    padding-top: 30px;
+}
+
+div.main_title{
+    text-align: center;
+    justify-content: center;
+    height: 40%;
+}
+
+button.button_add_user{
+    cursor: pointer;
+    background-color: #1DA1F2;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #14171A;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 50px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+button.modern_button{
+    margin-top: 30px;
+    font-size: 30px;
+    border-radius: 15px;
+    padding: 5px 35px;
+}
+
+button.button_add_user:hover{
+    cursor: pointer;
+    background: #14171A;
+    color: #1DA1F2;
+}
+
+div.user_list{
+    background-color: #14171A;
+    border-radius: 50px;
+    border: 5px solid;
+    border-color: #1DA1F2;
+    width: 90%;
+    height: 50%;
+    max-height: 50%;
+    margin: 0 auto;
+
+}
+
+div.user_head{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10%;
+    margin-top: 10px;
+}
+
+div.user_head table{
+    width: 100%; 
+    text-align: center;
+}
+
+div.user_head th{
+    font-size: 25px;
+    color: #1DA1F2;
+}
+
+div.user_info{
+    cursor: default;
+    display: flex; 
+    width: 90%; 
+    text-align: center;
+    background-color: #1DA1F2;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-color: #1DA1F2;
+    color: #14171A;
+    transition-duration: 0.4s;
+}
+
+div.user_info:hover{
+    cursor: pointer;
+    display: flex; 
+    width: 90%; 
+    text-align: center;
+    background-color: #14171A;
+    color: #1DA1F2;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-color: #1DA1F2;
+}
+
+div.user_info_forever{
+    cursor: pointer;
+    display: flex; 
+    width: 90%; 
+    text-align: center;
+    background-color: #14171A;
+    color: #1DA1F2;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-color: #1DA1F2;
+}
+
+div.user_info_forever span{
+    padding: 5px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 15px;
+}
+
+
+div.user_info span{
+    padding: 5px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 15px;
+}
+
+.button{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    margin-top: 5px;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.delete{
+    background-color: rgb(193, 29, 29);
+    color: rgb(84, 2, 2);
+    border-color: rgb(84, 2, 2);
+    transition-duration: 0.4s;
+}
+
+.delete:hover{
+    background-color: rgb(96, 0, 0);
+    color: rgb(183, 15, 15);
+}
+
+.edit{
+    width: 35px;
+    background-color: white;
+    color: #1DA1F2;
+    border-color: #1DA1F2;
+    transition-duration: 0.4s;
+}
+
+.edit:hover{
+    background-color: #14171A;
+    border: 1px solid;
+    color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+
+div.user_items{
+    margin: 0 auto;
+    width: 100%; 
+    overflow-y: scroll; 
+    height: 90%;
+    text-align: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1400px){
+    div.user_head th{
+        font-size: 15px;
+    }
+
+    div.user_head{
+        height: 5%;
+        align-items: center;
+    }
+
+    div.user_info_forever span{
+        font-size: 13px;
+    }
+
+    div.user_info span{
+        font-size: 13px;
+    }
+
+    .button{
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .edit{
+        width: 30px;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    button.modern_button{
+        font-size: 20px;
+    }
+
+    div.user_info_forever span{
+        font-size: 11px;
+    }
+
+    div.user_info span{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .button{
+        width: 15px;
+        height: 15px;
+        font-size: 10px;
+    }
+
+    .edit{
+        width: 25px;
+    }
+  }
+
+  @media (max-width: 650px) {
+
+    button.modern_button{
+        font-size: 18px;
+    }
+
+    div.user_info_forever span{
+        font-size: 9px;
+    }
+
+    div.user_info span{
+        font-size: 9px;
+    }
+
+    .button{
+        width: 13px;
+        height: 13px;
+        font-size: 8px;
+    }
+
+    .edit{
+        width: 20px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+
+    button.modern_button{
+        font-size: 15px;
+    }
+
+    div.user_info_forever span{
+        font-size: 7px;
+    }
+
+    div.user_info span{
+        font-size: 7px;
+    }
+
+    .button{
+        width: 12px;
+        height: 12px;
+        font-size: 7px;
+    }
+
+    .edit{
+        width: 20px;
+    }
+
+  }
+
+
+  @media (max-width: 400px) {
+    div.user_head th{
+        font-size: 12px;
+    }
+
+    div.user_info span{
+        font-size: 6px;
+    }
+
+    div.user_info_forever span{
+        font-size: 6px;
+    }
+
+    .button{
+        width: 11px;
+        height: 11px;
+        font-size: 6px;
+    }
+
+    .edit{
+        width: 18px;
+    }
+}
+
+
+@media screen and (max-height: 650px){
+    div.user_list{
+        margin-top: 100px;
+    }
+    
+}
+
+
+@media screen and (max-height: 450px){
+    div.user_list{
+        margin-top: 200px;
+    }
+    
+}
+
+

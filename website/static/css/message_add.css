@@ -1,0 +1,324 @@
+div.main_window{
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Z message_read */
+div.message_read_info{
+    margin-top: 20px;
+    display: flex;
+}
+
+div.message_read_info_date{
+    margin-top: 20px;
+    display: flex;
+}
+
+
+.right{
+    margin-left: auto;
+}
+
+.above_message{
+    width: 25%;
+}
+
+.above_message2{
+    width: 33.3%;
+}
+
+
+/* Až po sem :) */
+
+
+/* Z input */
+input.date {
+    background-color: #14171A;
+    color: #1DA1F2;
+    border: 2px solid;
+    border-color: #1DA1F2;
+    border-radius: 15px;
+    font-size: 30px;
+    color-scheme: dark;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  input.interval {  
+    background-color: #14171A;
+    color: #1DA1F2;
+    border: 2px solid;
+    border-color: #1DA1F2;
+    border-radius: 15px;
+    color-scheme: dark;
+    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+  }
+
+select.languages {
+  background-color: #14171A;
+  color: #1DA1F2;
+  border: 2px solid;
+  border-color: #1DA1F2;
+  border-radius: 15px;
+  color-scheme: dark;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+
+input.text{
+    background-color: #14171A;
+    color: #1DA1F2;
+    border: 2px solid;
+    border-color: #1DA1F2;
+    border-radius: 15px;
+    color-scheme: dark;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  input.button_add_user{
+    cursor: pointer;
+    background-color: #1DA1F2;
+    border: 3px solid;
+    border-color: #1DA1F2;
+    color: #14171A;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    margin-top: 50px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    margin-bottom: 30px;
+  }
+
+
+
+/* Až po sem :) */
+
+/* Ze stars */
+.rating label {
+    color: lightgray;
+    display: inline-block;
+    font-size: 35px;
+    margin: 0 -2px;
+    transition: transform .15s ease;
+  }
+
+/* Až po sem :) */
+
+h1.main_title{
+    font-size: 60px;
+    color: #1DA1F2;
+    padding-top: 30px;
+    text-align: center;
+}
+
+div.add_input{
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+
+
+div.add_input span{
+    font-size: 25px;
+    margin: 20px;
+    color: #1DA1F2;
+}
+
+
+.input_size{
+    font-size: 25px;
+}
+
+div.add_input textarea{
+    resize: none;
+    width: 100%;
+    height: 250px;
+    border: 5px solid;
+    border-color: #1DA1F2;
+    background-color: #14171A;
+    border-radius: 15px;
+    font-size: 25px;
+    color: #1DA1F2;
+}
+
+.space{
+    margin-top: 15px;
+}
+
+input.font_size{
+    font-size: 25px;
+    width: 90%;
+}
+
+select.font_size{
+    font-size: 25px;
+    width: 90%;
+}
+
+@media screen and (max-width: 1440px){
+    input.text{
+
+        border: 2px solid;
+        width: 300px;
+
+        border-radius: 13px;
+
+        font-size: 30px;
+
+      }
+    div.add_input span{
+        font-size: 20px;
+        margin: 5px;
+
+
+    }
+    input.date {
+        border-radius: 10px;
+        font-size: 20px;
+
+      }
+
+    input.interval {
+
+        border: 2px solid;
+
+        border-radius: 10px;
+        font-size: 25px;
+
+    }
+
+    select.languages {
+
+      border: 2px solid;
+
+      border-radius: 10px;
+
+      font-size: 25px;
+
+      text-align: center;
+
+    }
+
+    input.text{
+        font-size: 20px;
+
+      }
+
+      input.button_add_user{
+        font-size: 25px;
+        margin-top: 50px;
+
+      }
+
+}
+@media screen and (max-width: 1050px){
+    
+    input.text{
+        width: 165px;
+        border-radius: 15px;
+        font-size: 30px;
+
+      }
+
+
+
+    input.date {
+        border-radius: 10px;
+        font-size: 15px;
+
+      }
+
+    input.interval {
+
+        border: 2px solid;
+
+        border-radius: 10px;
+        font-size: 20px;
+
+    }
+
+  
+    input.text{
+        font-size: 20px;
+
+      }
+
+      input.button_add_user{
+        font-size: 23px;
+        margin-top: 50px;
+
+      }
+
+
+    
+    div.add_input span{
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    h1.main_title{
+        font-size: 50px;
+        padding-top: 30px;
+    }
+    
+}
+@media screen and (max-width: 800px){
+    
+    div.add_input span{
+        font-size: 15px;
+        margin: 5px;
+    
+    
+    }
+    select.languages {
+
+        border: 2px solid;
+  
+        border-radius: 10px;
+  
+        font-size: 20px;
+  
+        text-align: center;
+  
+      }
+    h1.main_title{
+        font-size: 40px;
+            
+        padding-top: 30px;
+            
+        }
+    
+    div.message_read_info{
+        display: block;
+    
+    }
+    .above_message{
+        width: 100%;
+    
+    }
+    input.button_add_user{
+        font-size: 23px;
+        margin-top: 25px;
+
+      }
+
+      button.new_mess{
+        font-size: 15px;
+        padding: 3px 15px;
+    }
+
+    div.add_input textarea{
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+}
