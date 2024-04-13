@@ -1,10 +1,10 @@
 # HitNote
-Hitnote je úžasná webová aplikace, která je vytvořena, jako součást soutěže [Tour de App](https://tourdeapp.cz/). Aplikace slouží jako deník pro programátory, kteří si zde můžou zapisovat jejich postup v programování.
-## Tvůrci:
-Aplikaci vytvořili **Tomáš Hanák**, **Šimon Halas** a **Adam Hladík**
-## Požadavky: 
-Ke spuštění budete potřebovat **Python** s moduly **Flask**, **SQLAlchemy** a **Flask-Login**.
-## Upozornění:
-Defaultní jméno uživatele je: **admin** a heslo je: **123456**.
-Aplikace je testována pouze pro počítače, respektivě je testována na rozlišení 1920x1080.
-Aplikace je testována pouze na prohlížeče s jádrem **Chromium** (Google Chrome, Microsoft Edge ...)
+Hitnote is an amazing web app created as part of the [Tour de App](https://tourdeapp.cz/) competition. The app serves as a diary for programmers to record their programming progress.
+## Creators:
+The app was created by **Tomáš Hanák**, **Šimon Halas** and **Adam Hladík**
+## Requirements: 
+You will need **Python** with **Flask**, **SQLAlchemy** and **Flask-Login** modules to run it.
+## Notification:
+The default user name is: **admin** and the password is: **123456**.
+The application is tested for computers only, respectively it is tested on 1920x1080 resolution.
+The application is tested only on browsers with **Chromium** kernel (Google Chrome, Microsoft Edge ...)
